@@ -14,5 +14,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
-  "license": "MIT"
+  "license": "GPLv3",
+  "engines": {
+    "node": "14.15.4"
+  }
 }
