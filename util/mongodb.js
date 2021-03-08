@@ -1,6 +1,14 @@
 import { MongoClient } from 'mongodb'
 
-const { MONGODB_URI, MONGODB_DB } = process.env
+let MONGODB_URI = process.env.LOCAL_URI;
+if (process.env.NODE_ENV === 'production') {
+  MONGODB_URI = process.env.ATLAS_URI;
+}
+
+let MONGODB_DB = process.env.LOCAL_MONGODB_DB
+if (process.env.NODE_ENV === 'production') {
+  MONGODB_DB = process.env.ATLAS_MONGODB_DB;
+}
 
 if (!MONGODB_URI) {
   throw new Error(
