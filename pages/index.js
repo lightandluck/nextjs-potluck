@@ -11,7 +11,7 @@ export default function Home({ isConnected }) {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js with MongoDB!</a>
+          Does auto deploy work on Heroku?
         </h1>
 
         {isConnected ? (
