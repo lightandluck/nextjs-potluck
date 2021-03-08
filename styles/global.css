@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #DDD;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.offering {
+  background-color: hsla(197, 82.5%, 49.4%, 0.37)
+}
+
+/* HACK: This overrides zen-table styles, until we don't use them anymore */
+.offering:hover {
+  background-color: hsla(197, 82.5%, 49.4%, 0.37) !important
+}
+
+.potluck-item {
+  background-color:hsla(118.1, 93.2%, 40.6%, 0.37) 
+}
+
+.potluck-item:hover {
+  background-color:hsla(118.1, 93.2%, 40.6%, 0.37) !important
+}
