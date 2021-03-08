@@ -10,64 +10,32 @@ export default function Home({ isConnected }) {
       </Head>
 
       <main>
-        <h1 className="title">
-          Does auto deploy work on Heroku?
-        </h1>
+      <h1>Potluck Prototype</h1>
 
-        {isConnected ? (
-          <h2 className="subtitle">You are connected to MongoDB</h2>
-        ) : (
-          <h2 className="subtitle">
-            You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
-            for instructions.
-          </h2>
-        )}
+      <p>This is an MVP for creating wantlists for TradeMaximizer. The hope is that it can facilitate a math trade for things other than boardgames, which was the intention of the original TradeMaximizer. This only creates the wantlist text file that is inputted into the TradeMaximizer .jar file. Hope is that that is turned into a service or ported to javascript in the future to be done all in app.</p>
 
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+      <h2>Credits and Prior Art</h2>
+      <ul>
+        <li>
+          Used <a href="https://github.com/beaucarnes/mern-exercise-tracker-mongodb">https://github.com/beaucarnes/mern-exercise-tracker-mongodb</a> as foundation (Mongoose may have been unnecessary)
+        </li>
+        <li>
+          Inspiration from: <a href="https://github.com/abecorn/abecornlite">https://github.com/abecorn/abecornlite</a>. Also the commercial site: <a href="https://www.abecorn.com">abecorn.com</a>
+        </li>
+        <li>
+          The BoardGameGeek community and everything they've done and shared about Math Trades - <a href="https://boardgamegeek.com/wiki/page/Math_Trades">https://boardgamegeek.com/wiki/page/Math_Trades</a>
+        </li>
+        <li>
+        The original TradeMaximizer: <a href="https://github.com/chrisokasaki/TradeMaximizer">https://github.com/chrisokasaki/TradeMaximizer</a>
+        </li>
+        <li>
+        Online Wantlist Generator: <a href="https://boardgamegeek.com/wiki/page/OLWLG#toc12">https://boardgamegeek.com/wiki/page/OLWLG#toc12</a>
+        </li>
+        <li>
+        TradeMaximizer wiki: <a href="https://boardgamegeek.com/wiki/page/TradeMaximizer">https://boardgamegeek.com/wiki/page/TradeMaximizer</a>
+        </li>
+      </ul>
       </main>
-
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
 
       <style jsx>{`
         .container {
