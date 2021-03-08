@@ -1,27 +1,38 @@
-## Example app using MongoDB
+# Potluck Prototype
+This is an MVP for creating wantlists for TradeMaximizer. The hope is that it can facilitate a math trade for things other than boardgames, which was the intention of the original TradeMaximizer. This only creates the wantlist text file that is inputted into the TradeMaximizer .jar file. Hope is that that is turned into a service or ported to javascript in the future to be done all in app.
 
-[MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.
+Demo: https://potluck-prototype.herokuapp.com/
 
-If you want to learn more about MongoDB, visit the following pages:
+## How to install
+- Install mongodb, setup a database
+- Change `.env.example` to `.env` and fill info with your connection string
+  - You can use cloud-based Atlas service or local mongodb server.
+- `npm install` all the things in the root folder and `client` subfolder
+- To start mongodb, start from command line: `mongod --auth`
+- Run server in cli tab with `nodemon server.js`. This watches server files and reloads automatically
+- Run front-end app by `cd client`, then `npm run start`. This also hot reloads
+- Create a `seeds` collection with one entry with `counter: 0` property in database
 
-- [MongoDB Atlas](https://mongodb.com/atlas)
-- [MongoDB Documentation](https://docs.mongodb.com/)
+## Innovation
+To create the wantlists instead of using a grid like the OLWLG and Abecorn, or setting individual values, instead we simply sort a list. 
 
-## Deploy your own
+!Warning - Still need to implement duplicate protection though!
 
-Once you have access to the environment variables you'll need, deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## Credits and Prior Art
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-mongodb&project-name=with-mongodb&repository-name=with-mongodb&env=MONGODB_URI,MONGODB_DB&envDescription=Required%20to%20connect%20the%20app%20with%20MongoDB)
+- Used https://github.com/beaucarnes/mern-exercise-tracker-mongodb as foundation (Mongoose may have been unnecessary).
+- Inspiration from: https://github.com/abecorn/abecornlite
+  - Also the commercial site: abecorn.com
+- The BoardGameGeek community and everything they've done and shared about Math Trades - https://boardgamegeek.com/wiki/page/Math_Trades
+- The original TradeMaximizer: https://github.com/chrisokasaki/TradeMaximizer
+- Online Wantlist Generator: https://boardgamegeek.com/wiki/page/OLWLG#toc12
+- TradeMaximizer wiki: https://boardgamegeek.com/wiki/page/TradeMaximizer 
 
-## How to use
+## Links to useful things
+- Setting up mongo locally: https://zellwk.com/blog/local-mongodb/
+- https://zendeskgarden.github.io/react-components/tables/ for the sorting table and how to use it with https://github.com/atlassian/react-beautiful-dnd
+- Inspiration that this can work in real-life during COVID as well: https://boardgamegeek.com/thread/2459102/9th-annual-pacific-northwest-game-swap/page/14
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-mongodb with-mongodb-app
-# or
-yarn create next-app --example with-mongodb with-mongodb-app
-```
 
 ## Configuration
 
@@ -39,8 +50,10 @@ cp .env.local.example .env.local
 
 Set each variable on `.env.local`:
 
-- `MONGODB_URI` - Your MongoDB connection string. If you are using [MongoDB Atlas](https://mongodb.com/atlas) you can find this by clicking the "Connect" button for your cluster.
-- `MONGODB_DB` - The name of the MongoDB database you want to use.
+- `ATLAS_URI` - Cloud connection string
+- `LOCAL_URI` - Local DB connection string
+- `LOCAL_MONGODB_DB` - Local DB Name
+- `ATLAS_MONGODB_DB` - Cloud DB Name
 
 ### Run Next.js in development mode
 
@@ -54,24 +67,13 @@ yarn install
 yarn dev
 ```
 
-Your app should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
+Your app should be up and running on [http://localhost:3001](http://localhost:3001)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
 
 You will either see a message stating "You are connected to MongoDB" or "You are NOT connected to MongoDB". Ensure that you have provided the correct `MONGODB_URI` and `MONGODB_DB` environment variables.
 
 When you are successfully connected, you can refer to the [MongoDB Node.js Driver docs](https://mongodb.github.io/node-mongodb-native/3.4/tutorials/collections/) for further instructions on how to query your database.
 
-## Deploy on Vercel
-
-You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
 #### Deploy Your Local Project
 
-To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and [import to Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example).
-
-**Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
-
-#### Deploy from Our Template
-
-Alternatively, you can deploy using our template by clicking on the Deploy button below.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-mongodb&project-name=with-mongodb&repository-name=with-mongodb&env=MONGODB_URI,MONGODB_DB&envDescription=Required%20to%20connect%20the%20app%20with%20MongoDB)
+- Follow these directions to deploy to heroku: https://mariestarck.com/deploy-your-next-js-app-to-heroku-in-5-minutes/
+- Make sure `next` dependency in `package.json` is explicityly set: https://www.reddit.com/r/nextjs/comments/hdkkps/sh_1_next_not_found_when_deploying_on_heroku/
