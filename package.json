@@ -4,14 +4,13 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
     "build": "next build",
-    "heroku-postbuild": "npm run build",
     "start": "next start -p $PORT"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "mongodb": "^3.6.3",
-    "next": "latest",
+    "next": "^10.0.8",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
