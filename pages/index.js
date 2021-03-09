@@ -5,7 +5,6 @@ export default function Home() {
     <div className='container'>
       <Head>
         <title>Potluck Prototype</title>
-        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <main>
@@ -65,7 +64,7 @@ export default function Home() {
         </ul>
       </main>
 
-      <style jsx>{`
+      {/* <style jsx>{`
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -213,7 +212,7 @@ export default function Home() {
         * {
           box-sizing: border-box;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 }

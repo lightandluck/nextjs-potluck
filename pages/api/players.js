@@ -30,12 +30,6 @@ export default async function handler(req, res) {
         } else {
           throw new Error('Request body did not contain name');
         }
-
-        // TODO: Probably simpler way to do this. Change when able to test later.
-        // const newPlayer = await Player.create(
-        //   req.body
-        // ) /* create a new model in the database */
-        // res.status(201).json({ success: true, data: newPlayer })
       } catch (error) {
         res.status(400).json({ name: error.name, message: error.message });
       }
