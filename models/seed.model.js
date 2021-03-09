@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const seedSchema = new Schema({
+  prefix: String,
   counter: Number,
 });
 
