@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
+    "prestart": "next build",
     "build": "next build",
     "start": "next start -p $PORT"
   },
@@ -17,5 +18,8 @@
   "license": "GPLv3",
   "engines": {
     "node": "14.15.4"
-  }
+  },
+  "cacheDirectories": [
+    ".next/cache"
+  ]
 }
