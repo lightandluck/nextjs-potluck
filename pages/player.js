@@ -1,7 +1,5 @@
 import Head from 'next/head';
-
-
-import React, { Component, Fragment } from 'react';
+import { Component, Fragment } from 'react';
 import axios from 'axios';
 
 export default class CreateUser extends Component {
@@ -25,6 +23,7 @@ export default class CreateUser extends Component {
   onSubmit(e) {
     e.preventDefault();
 
+    // ADDTEST: Changed object to not have name field ex: {yaya: this.state.name}
     const user = {
       name: this.state.name
     }
@@ -32,8 +31,11 @@ export default class CreateUser extends Component {
     axios.post('/api/players', user)
       .then(res => {
         console.log(res.data);
+
+        // Redirects to /create, so user can begin creating offerings immediately
         // window.location = '/create';
-      });
+      })
+      .catch(error => console.log(error.response));
   }
 
   render() {
