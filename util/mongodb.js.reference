@@ -1,3 +1,5 @@
+// THIS FILE IS FOR REFERENCE ON HOW TO USE NODEJS MONGODB DRIVER
+
 import { MongoClient } from 'mongodb'
 
 let MONGODB_URI = process.env.LOCAL_URI;

@@ -1,3 +1,5 @@
+// THIS FILE IS FOR REFERENCE ON HOW TO USE NODEJS MONGODB DRIVER
+
 import { connectToDatabase } from '../../util/mongodb';
 
 export default async (req, res) => {
