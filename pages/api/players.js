@@ -39,7 +39,6 @@ export default async function handler(req, res) {
         // ) /* create a new model in the database */
         // res.status(201).json({ success: true, data: newPlayer })
       } catch (error) {
-        console.log(`${error.name}: ${error.message}`);
         res.status(400).json({
           success: false,
           error: { name: error.name, message: error.message },
