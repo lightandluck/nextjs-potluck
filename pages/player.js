@@ -10,14 +10,14 @@ export default class CreateUser extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      name: ''
-    }
+      name: '',
+    };
   }
 
   onChangeName(e) {
     this.setState({
-      name: e.target.value
-    })
+      name: e.target.value,
+    });
   }
 
   onSubmit(e) {
@@ -25,17 +25,18 @@ export default class CreateUser extends Component {
 
     // ADDTEST: Changed object to not have name field ex: {yaya: this.state.name}
     const user = {
-      name: this.state.name
-    }
+      name: this.state.name,
+    };
 
-    axios.post('/api/players', user)
-      .then(res => {
+    axios
+      .post('/api/players', user)
+      .then((res) => {
         console.log(res.data);
 
         // Redirects to /create, so user can begin creating offerings immediately
         // window.location = '/create';
       })
-      .catch(error => console.log(error.response));
+      .catch((error) => console.log(error.response));
   }
 
   render() {
@@ -43,26 +44,31 @@ export default class CreateUser extends Component {
       <Fragment>
         <Head>
           <title>Nextjs Potluck Prototype</title>
-          <link rel="icon" href="/favicon.ico" />
+          <link rel='icon' href='/favicon.ico' />
         </Head>
         <div>
           <h3>Create New Player</h3>
           <form onSubmit={this.onSubmit}>
-            <div className="form-group"> 
+            <div className='form-group'>
               <label>Name: </label>
-              <input type="text"
-                  required
-                  className="form-control"
-                  value={this.state.name}
-                  onChange={this.onChangeName}
-                  />
+              <input
+                type='text'
+                required
+                className='form-control'
+                value={this.state.name}
+                onChange={this.onChangeName}
+              />
             </div>
-            <div className="form-group">
-              <input type="submit" value="Create Player" className="btn btn-primary" />
+            <div className='form-group'>
+              <input
+                type='submit'
+                value='Create Player'
+                className='btn btn-primary'
+              />
             </div>
           </form>
         </div>
       </Fragment>
-    )
+    );
   }
 }

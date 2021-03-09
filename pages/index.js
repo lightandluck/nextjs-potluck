@@ -1,40 +1,69 @@
-import Head from 'next/head'
-import { connectToDatabase } from '../util/mongodb'
+import Head from 'next/head';
+import { connectToDatabase } from '../util/mongodb';
 
 export default function Home({ isConnected }) {
   return (
-    <div className="container">
+    <div className='container'>
       <Head>
         <title>Potluck Prototype</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <main>
-      <h1>Potluck Prototype</h1>
+        <h1>Potluck Prototype</h1>
 
-      <p>This is an MVP for creating wantlists for TradeMaximizer. The hope is that it can facilitate a math trade for things other than boardgames, which was the intention of the original TradeMaximizer. This only creates the wantlist text file that is inputted into the TradeMaximizer .jar file. Hope is that that is turned into a service or ported to javascript in the future to be done all in app.</p>
+        <p>
+          This is an MVP for creating wantlists for TradeMaximizer. The hope is
+          that it can facilitate a math trade for things other than boardgames,
+          which was the intention of the original TradeMaximizer. This only
+          creates the wantlist text file that is inputted into the
+          TradeMaximizer .jar file. Hope is that that is turned into a service
+          or ported to javascript in the future to be done all in app.
+        </p>
 
-      <h2>Credits and Prior Art</h2>
-      <ul>
-        <li>
-          Used <a href="https://github.com/beaucarnes/mern-exercise-tracker-mongodb">https://github.com/beaucarnes/mern-exercise-tracker-mongodb</a> as foundation (Mongoose may have been unnecessary)
-        </li>
-        <li>
-          Inspiration from: <a href="https://github.com/abecorn/abecornlite">https://github.com/abecorn/abecornlite</a>. Also the commercial site: <a href="https://www.abecorn.com">abecorn.com</a>
-        </li>
-        <li>
-          The BoardGameGeek community and everything they've done and shared about Math Trades - <a href="https://boardgamegeek.com/wiki/page/Math_Trades">https://boardgamegeek.com/wiki/page/Math_Trades</a>
-        </li>
-        <li>
-        The original TradeMaximizer: <a href="https://github.com/chrisokasaki/TradeMaximizer">https://github.com/chrisokasaki/TradeMaximizer</a>
-        </li>
-        <li>
-        Online Wantlist Generator: <a href="https://boardgamegeek.com/wiki/page/OLWLG#toc12">https://boardgamegeek.com/wiki/page/OLWLG#toc12</a>
-        </li>
-        <li>
-        TradeMaximizer wiki: <a href="https://boardgamegeek.com/wiki/page/TradeMaximizer">https://boardgamegeek.com/wiki/page/TradeMaximizer</a>
-        </li>
-      </ul>
+        <h2>Credits and Prior Art</h2>
+        <ul>
+          <li>
+            Used{' '}
+            <a href='https://github.com/beaucarnes/mern-exercise-tracker-mongodb'>
+              https://github.com/beaucarnes/mern-exercise-tracker-mongodb
+            </a>{' '}
+            as foundation (Mongoose may have been unnecessary)
+          </li>
+          <li>
+            Inspiration from:{' '}
+            <a href='https://github.com/abecorn/abecornlite'>
+              https://github.com/abecorn/abecornlite
+            </a>
+            . Also the commercial site:{' '}
+            <a href='https://www.abecorn.com'>abecorn.com</a>
+          </li>
+          <li>
+            The BoardGameGeek community and everything they've done and shared
+            about Math Trades -{' '}
+            <a href='https://boardgamegeek.com/wiki/page/Math_Trades'>
+              https://boardgamegeek.com/wiki/page/Math_Trades
+            </a>
+          </li>
+          <li>
+            The original TradeMaximizer:{' '}
+            <a href='https://github.com/chrisokasaki/TradeMaximizer'>
+              https://github.com/chrisokasaki/TradeMaximizer
+            </a>
+          </li>
+          <li>
+            Online Wantlist Generator:{' '}
+            <a href='https://boardgamegeek.com/wiki/page/OLWLG#toc12'>
+              https://boardgamegeek.com/wiki/page/OLWLG#toc12
+            </a>
+          </li>
+          <li>
+            TradeMaximizer wiki:{' '}
+            <a href='https://boardgamegeek.com/wiki/page/TradeMaximizer'>
+              https://boardgamegeek.com/wiki/page/TradeMaximizer
+            </a>
+          </li>
+        </ul>
       </main>
 
       <style jsx>{`
@@ -187,15 +216,15 @@ export default function Home({ isConnected }) {
         }
       `}</style>
     </div>
-  )
+  );
 }
 
 export async function getServerSideProps(context) {
-  const { client } = await connectToDatabase()
+  const { client } = await connectToDatabase();
 
-  const isConnected = await client.isConnected()
+  const isConnected = await client.isConnected();
 
   return {
     props: { isConnected },
-  }
+  };
 }
