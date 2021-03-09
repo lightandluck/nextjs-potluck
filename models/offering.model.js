@@ -15,7 +15,7 @@ const offeringSchema = new Schema(
   }
 );
 
-const Offering =
+let Offering =
   mongoose.models.Offering || mongoose.model('Offering', offeringSchema);
 
 export default Offering;
