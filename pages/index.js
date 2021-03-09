@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-export default function Home({ isConnected }) {
+export default function Home() {
   return (
     <div className='container'>
       <Head>
@@ -216,14 +216,4 @@ export default function Home({ isConnected }) {
       `}</style>
     </div>
   );
-}
-
-export async function getServerSideProps(context) {
-  const { client } = await connectToDatabase();
-
-  const isConnected = await client.isConnected();
-
-  return {
-    props: { isConnected },
-  };
 }
