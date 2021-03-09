@@ -8,12 +8,10 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const players = await Player.find(
-          {}
-        ); /* find all the data in our database */
-        res.status(200).json({ success: true, data: players });
+        const players = await Player.find({});
+        res.status(200).json(players);
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ type: error.name, message: error.message });
       }
       break;
     case 'POST':
@@ -25,10 +23,10 @@ export default async function handler(req, res) {
 
           newPlayer
             .save()
-            .then(() =>
-              res.status(201).json({ success: true, data: newPlayer })
-            )
-            .catch((error) => res.status(400).json('Error: ' + error));
+            .then(() => res.status(201).json(newPlayer))
+            .catch((error) =>
+              res.status(400).json({ name: error.name, message: error.message })
+            );
         } else {
           throw new Error('Request body did not contain name');
         }
@@ -39,17 +37,12 @@ export default async function handler(req, res) {
         // ) /* create a new model in the database */
         // res.status(201).json({ success: true, data: newPlayer })
       } catch (error) {
-        res.status(400).json({
-          success: false,
-          error: { name: error.name, message: error.message },
-        });
+        res.status(400).json({ name: error.name, message: error.message });
       }
       break;
     default:
       res.setHeader('Allow', ['GET', 'POST']);
-      res
-        .status(405)
-        .json({ success: false, message: `Method ${method} Not Allowed` });
+      res.status(405).json({ message: `Method ${method} Not Allowed` });
       break;
   }
 }
