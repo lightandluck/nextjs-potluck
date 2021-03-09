@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 let MONGODB_URI = process.env.LOCAL_MONGOOSE_URI;
 if (process.env.NODE_ENV === 'production') {
-  MONGODB_URI = process.env.ATLAS_URI;
+  MONGODB_URI = process.env.ATLAS_MONGOOSE_URI;
 }
 
 async function dbConnect() {
