@@ -30,7 +30,7 @@ export default async function handler(req, res) {
             )
             .catch((error) => res.status(400).json('Error: ' + error));
         } else {
-          throw 'Request body did not contain name';
+          throw new Error('Request body did not contain name');
         }
 
         // TODO: Probably simpler way to do this. Change when able to test later.
@@ -39,7 +39,11 @@ export default async function handler(req, res) {
         // ) /* create a new model in the database */
         // res.status(201).json({ success: true, data: newPlayer })
       } catch (error) {
-        res.status(400).json({ success: false, Error: error });
+        console.log(`${error.name}: ${error.message}`);
+        res.status(400).json({
+          success: false,
+          error: { name: error.name, message: error.message },
+        });
       }
       break;
     default:
