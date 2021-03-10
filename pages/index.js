@@ -12,14 +12,22 @@ export default function Home() {
         <h1>Potluck Prototype</h1>
 
         <p>
-          This is an MVP for creating wantlists for TradeMaximizer. The hope is
-          that it can facilitate a math trade for things other than boardgames,
-          which was the intention of the original TradeMaximizer. This only
-          creates the wantlist text file that is inputted into the
-          TradeMaximizer .jar file. Hope is that that is turned into a service
-          or ported to javascript in the future to be done all in app.
+          This is an prototype for creating wantlists for TradeMaximizer. The
+          hope is that it can facilitate a math trade for things other than
+          boardgames, which was the intention of the original TradeMaximizer.
+          This only creates the wantlist text file that is inputted into the
+          TradeMaximizer .jar file. The hope is that .jar file can be turned
+          into a service or ported to javascript in the future so that
+          everything can be done in this app.
         </p>
 
+        <h2>Innovation</h2>
+        <p>
+          To create the wantlists instead of using a grid like the OLWLG and
+          Abecorn, or setting individual values, instead we simply sort a list.
+          This means that the process of evaluating trades for the user
+          decreases from O(n^2) to O(n) complexity.
+        </p>
         <h2>Credits and Prior Art</h2>
         <ul>
           <li>
