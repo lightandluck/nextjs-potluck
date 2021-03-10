@@ -15,17 +15,8 @@ code {
 main {
   padding: 1rem 0;
 }
-.bg-dark {
-  background-color: var(--primary) !important;
-}
 
-.navbar-dark .navbar-brand {
-  color: #333;
-}
 
-.navbar-dark .navbar-nav .nav-link {
-  color: rgba(33, 33, 33, 0.6);
-}
 
 .offering {
   background-color: hsla(197, 82.5%, 49.4%, 0.37);

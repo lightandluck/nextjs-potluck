@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { Fragment } from 'react';
 
 export default function Home() {
   return (
-    <div className='container'>
+    <Fragment>
       <Head>
         <title>Potluck Prototype</title>
       </Head>
@@ -213,6 +214,6 @@ export default function Home() {
           box-sizing: border-box;
         }
       `}</style> */}
-    </div>
+    </Fragment>
   );
 }

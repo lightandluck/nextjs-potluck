@@ -1,12 +1,12 @@
 import Navbar from '../components/Navbar';
 import Head from 'next/head';
+import { Fragment } from 'react';
 import '../styles/bootstrap.min.css';
 import '../styles/global.css';
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    // TODO: Figure out if we really want to wrap our entire application in div.container
-    <div className='container'>
+    <Fragment>
       <Head>
         <meta charset='utf-8' />
         <meta
@@ -30,7 +30,9 @@ export default function MyApp({ Component, pageProps }) {
         ></script>
       </Head>
       <Navbar />
-      <Component {...pageProps} />
-    </div>
+      <div className='container'>
+        <Component {...pageProps} />
+      </div>
+    </Fragment>
   );
 }
