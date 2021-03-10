@@ -31,7 +31,12 @@ export default class CreateUser extends Component {
     axios
       .post('/api/players', user)
       .then((res) => {
+        console.log('Player added:');
         console.log(res.data);
+
+        const { name, _id } = res.data;
+        localStorage.setItem('playerName', name);
+        localStorage.setItem('playerId', _id);
 
         // Redirects to /create, so user can begin creating offerings immediately
         // window.location = '/create';
