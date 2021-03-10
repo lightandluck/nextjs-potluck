@@ -28,7 +28,7 @@ export default async function handler(req, res) {
               res.status(400).json({ name: error.name, message: error.message })
             );
         } else {
-          throw new Error('Request body did not contain name');
+          throw new Error('Request body did not contain name field.');
         }
       } catch (error) {
         res.status(400).json({ name: error.name, message: error.message });
