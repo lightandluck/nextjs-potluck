@@ -36,3 +36,5 @@ export default function MyApp({ Component, pageProps }) {
     </Fragment>
   );
 }
+
+// TODO: Get and/or set seed when app starts

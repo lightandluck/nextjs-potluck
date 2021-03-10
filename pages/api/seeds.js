@@ -15,7 +15,7 @@ export default async function handler(req, res) {
           res.status(400).json({ name: error.name, message: error.message })
         );
       break;
-    // #region REFERENCE: This will get of `API resolved without response` warning,
+    /* #region REFERENCE: This will get of `API resolved without response` warning, */
     //            but way too verbose.
     // TODO: Find better way of getting rid of those warnings
     // try {
@@ -33,11 +33,12 @@ export default async function handler(req, res) {
     // } catch (error) {
     //   res.status(400).json({ name: error.name, message: error.message });
     // }
-    // #endregion
+    /* #endregion */
 
     case 'POST':
+      // TODO: Figure out how to restrict database to distinct seed prefixes
       try {
-        const { prefix, counter = 1 } = req.body;
+        const { prefix, counter = 0 } = req.body;
 
         if (prefix && counter) {
           const newSeed = new Seed({ prefix, counter });
@@ -45,7 +46,9 @@ export default async function handler(req, res) {
           newSeed
             .save()
             .then(() =>
-              res.json('Seed added. Counter starting at: ' + counter.toString())
+              res.json({
+                message: `Seed: ${prefix} added. Counter starting at: ${counter.toString()}`,
+              })
             )
             .catch((error) =>
               res.status(400).json({ name: error.name, message: error.message })
@@ -67,7 +70,7 @@ export default async function handler(req, res) {
       break;
   }
 
-  // #region TODO: Figure out if we need this update path
+  /* #region TODO: Figure out if we need this update path */
   // router.route('/update/:id').post((req, res) => {
   //   Seed.findById(req.params.id)
   //     .then((seed) => {
@@ -81,5 +84,5 @@ export default async function handler(req, res) {
   //     })
   //     .catch((err) => res.status(400).json('Error: ' + err));
   // });
-  // //#endregion
+  /* #endregion */
 }
