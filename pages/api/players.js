@@ -7,12 +7,11 @@ export default async function handler(req, res) {
 
   switch (method) {
     case 'GET':
-      try {
-        const players = await Player.find({});
-        res.status(200).json(players);
-      } catch (error) {
-        res.status(400).json({ type: error.name, message: error.message });
-      }
+      Player.find()
+        .then((players) => res.status(200).json(players))
+        .catch((error) =>
+          res.status(400).json({ type: error.name, message: error.message })
+        );
       break;
     case 'POST':
       try {

@@ -46,7 +46,7 @@ export default async function handler(req, res) {
           newSeed
             .save()
             .then(() =>
-              res.json({
+              res.status(201).json({
                 message: `Seed: ${prefix} added. Counter starting at: ${counter.toString()}`,
               })
             )
