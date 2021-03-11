@@ -123,7 +123,6 @@ export default class OfferingsList extends Component {
   render() {
     return (
       <div>
-        <h3>Offerings</h3>
         <div className='form-group'>
           <label>Player name: </label>
           <select
@@ -146,28 +145,31 @@ export default class OfferingsList extends Component {
             })}
           </select>
         </div>
+        <h3>Your Offerings</h3>
         <table className='table'>
-          <thead className='thead-light'>
-            <tr>
+          <tbody>
+            <tr className='table-info'>
               <th>Player name</th>
               <th>Title</th>
               <th>Description</th>
               <th>Actions</th>
             </tr>
-          </thead>
-          <tbody>
             {this.offeringsList()}
-            <tr>
-              <td colSpan='5'>Potluck Items</td>
+          </tbody>
+        </table>
+        <h3>Potluck Offerings</h3>
+        <table className='table'>
+          <caption></caption>
+          <tbody>
+            <tr className='table-primary'>
+              <th>Player name</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Actions</th>
             </tr>
             {this.potluckList()}
           </tbody>
         </table>
-        <style jsx>{`
-          table {
-            color: #333;
-          }
-        `}</style>
       </div>
     );
   }
@@ -176,22 +178,22 @@ export default class OfferingsList extends Component {
 // TODO: Add confirmation to delete action!
 function Offering({ offering, deletedOffering }) {
   return (
-    <tr className='offering'>
+    <tr>
       <td>{offering.playerName}</td>
       <td>{offering.title}</td>
       <td>{offering.description}</td>
       <td>
-        <button>
-          <Link href={'/edit/' + offering._id}>edit</Link>
+        <button type='button' className='btn btn-info btn-sm'>
+          <Link href={'/edit/' + offering._id}>Edit</Link>
         </button>{' '}
-        |{' '}
         <Link href=''>
           <a
+            className='deleteLink'
             onClick={() => {
               deleteOffering(offering._id);
             }}
           >
-            delete
+            Delete
           </a>
         </Link>
       </td>
@@ -207,7 +209,13 @@ function PotluckItem({ offering, addToWishlist }) {
       <td>{offering.title}</td>
       <td>{offering.description}</td>
       <td>
-        <button onClick={() => addToWishlist(offering)}>Add to wishlist</button>
+        <button
+          type='button'
+          className='btn btn-primary btn-sm'
+          onClick={() => addToWishlist(offering)}
+        >
+          + wishlist
+        </button>
       </td>
     </tr>
   );

@@ -4,7 +4,7 @@ import Link from 'next/link';
 const NavBar = () => {
   return (
     <Fragment>
-      <nav className='navbar bg-dark navbar-dark navbar-expand-lg'>
+      <nav className='navbar sticky-top navbar-dark bg-primary navbar-expand-lg'>
         <Link href='/'>
           <a className='navbar-brand'>Potluck</a>
         </Link>

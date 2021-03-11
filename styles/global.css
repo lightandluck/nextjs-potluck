@@ -16,12 +16,17 @@ main {
   padding: 1rem 0;
 }
 
+/* #region  NAVBAR */
 nav {
   font-weight: 500;
   margin-bottom: 1rem;
 }
 
-.bg-dark {
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(33, 33, 33, 0.6);
+}
+
+/* .bg-dark {
   background-color: var(--primary) !important;
 }
 
@@ -29,20 +34,56 @@ nav {
   color: #333;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-  color: rgba(33, 33, 33, 0.6);
-}
+
 
 .nav-link:hover {
   color: #fff;
+} */
+/* #endregion */
+
+/* #region  OFFERINGS */
+.table {
+  color: var(--dark);
 }
 
-.offering {
-  background-color: hsla(197, 82.5%, 49.4%, 0.37);
+.table td,
+.table th {
+  vertical-align: middle;
 }
+
+.deleteLink {
+  display: block;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+button a,
+button a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.table {
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
+}
+.table button {
+  width: 100%;
+}
+
+.table tr td:last-child {
+  padding: 0.5rem 0;
+}
+
+.table td {
+  border-top: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+/* .offering {
+  background-color: hsla(197, 82.5%, 49.4%, 0.37);
+} */
 
 /* HACK: This overrides zen-table styles, until we don't use them anymore */
-.offering:hover {
+/* .offering:hover {
   background-color: hsla(197, 82.5%, 49.4%, 0.37) !important;
 }
 
@@ -52,4 +93,9 @@ nav {
 
 .potluck-item:hover {
   background-color: hsla(118.1, 93.2%, 40.6%, 0.37) !important;
-}
+} */
+
+/* button a {
+  color: var(--gray-dark);
+} */
+/* #endregion */
