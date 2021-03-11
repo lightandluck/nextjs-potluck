@@ -42,7 +42,7 @@ export default async function handler(req, res) {
         );
       break;
     default:
-      res.setHeader('Allow', ['GET', 'POST']);
+      res.setHeader('Allow', ['GET', 'POST', 'DELETE']);
       res.status(405).json({ message: `Method ${method} Not Allowed` });
       break;
   }
