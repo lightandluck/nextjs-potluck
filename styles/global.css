@@ -63,9 +63,6 @@ button a:hover {
   text-decoration: none;
 }
 
-.table {
-  /* border: 1px solid rgba(0, 0, 0, 0.1); */
-}
 .table button {
   width: 100%;
 }

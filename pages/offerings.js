@@ -49,6 +49,7 @@ export default class OfferingsList extends Component {
       });
   }
 
+  // TODO: Need to delete offering from wishlists as well.
   deleteOffering(id) {
     axios.delete('/api/offerings/' + id).then((response) => {
       console.log(response.data);
