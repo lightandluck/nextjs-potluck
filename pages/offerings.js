@@ -123,7 +123,7 @@ export default class OfferingsList extends Component {
   render() {
     return (
       <div>
-        <h3>Logged Offerings</h3>
+        <h3>Offerings</h3>
         <div className='form-group'>
           <label>Player name: </label>
           <select

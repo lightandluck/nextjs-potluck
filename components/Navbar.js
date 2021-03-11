@@ -53,25 +53,19 @@ const NavBar = () => {
           </ul>
         </div>
       </nav>
-      <style jsx>{`
-        nav {
-          margin-bottom: 1rem;
-        }
-
-        .bg-dark {
-          background-color: var(--primary) !important;
-        }
-
-        .navbar-dark .navbar-brand {
-          color: #333;
-        }
-
-        .navbar-dark .navbar-nav .nav-link {
-          color: rgba(33, 33, 33, 0.6);
-        }
-      `}</style>
     </Fragment>
   );
 };
 
 export default NavBar;
+
+/* #region  NOTE: Attempts at styling with styled-jsx and css modules */
+// Was trying to get a.nav-link:hover { color: white; } to work using
+// the above approaches but they would not work
+// Using styled-jsx it created a.nav-link.jsx-00000:hover rule, but that
+// was somehow not specific enough to override the base classes color rule.
+// Tried using css-modules, but it would have been gnarly to mix
+// Bootstrap's pre-exisiting css class names with the imported styles object.
+// Would've been an ugly mess. So just put the nav bar styles into global.css.
+// Should move away from Bootstrap eventually.
+/* #endregion */
