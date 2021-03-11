@@ -33,6 +33,14 @@ export default async function handler(req, res) {
         res.status(400).json({ name: error.name, message: error.message });
       }
       break;
+    case 'DELETE':
+      const { name } = req.body;
+      Player.deleteOne({ name: name })
+        .then((deleteResponse) => res.status(200).json(deleteResponse))
+        .catch((error) =>
+          res.status(400).json({ name: error.name, message: error.message })
+        );
+      break;
     default:
       res.setHeader('Allow', ['GET', 'POST']);
       res.status(405).json({ message: `Method ${method} Not Allowed` });
