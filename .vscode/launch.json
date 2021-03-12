@@ -2,11 +2,44 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "pwa-chrome",
+      "url": "http://localhost:3001",
+      "webRoot": "${workspaceFolder}",
+      "skipFiles": [
+        "node-modules/**"
+      ],
+    },
+    
+    {
       "type": "node",
       "request": "attach",
-      "name": "Launch Program",
-      "skipFiles": ["<node_internals>/**"],
-      "port": 9229
+      "name": "Attach to Node",
+      "skipFiles": [
+        "<node_internals>/**",
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "address": "localhost",
+      "port": 9229,
+      "sourceMaps": true
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "name": "Debugger:firefox",
+      "url": "http://localhost:3001",
+      "webRoot": "${workspaceFolder}",
+      "skipFiles": [
+        "node-modules/**"
+      ],
+      "clearConsoleOnReload": true,
+      "pathMappings": [
+        {
+          "url": "http://localhost:3001/_next/static/chunks/pages",
+          "path": "${workspaceFolder}/pages"
+        }
+      ]
     }
   ]
 }
