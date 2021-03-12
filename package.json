@@ -1,5 +1,5 @@
 {
-  "name": "with-mongodb",
+  "name": "potluck-nextjs",
   "version": "0.1.0",
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev -p 3001",
@@ -7,13 +7,17 @@
     "start": "next start -p $PORT"
   },
   "dependencies": {
+    "@zendeskgarden/react-tables": "^8.32.2",
+    "@zendeskgarden/react-theming": "^8.32.2",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "mongodb": "^3.6.4",
     "mongoose": "^5.10.11",
     "next": "^10.0.8",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-beautiful-dnd": "^13.0.0",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   },
   "license": "GPLv3",
   "engines": {

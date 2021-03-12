@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--dark);
 }
 
 code {
@@ -63,6 +64,7 @@ button a:hover {
   text-decoration: none;
 }
 
+/* TODO: Fix positioning of 'Edit' button for shorter descriptions eg Hanh */
 .table button {
   width: 100%;
 }
@@ -75,12 +77,39 @@ button a:hover {
   border-top: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* .offering {
+
+.wishlist-info {
+  /* display: flex; */
+  margin-top: 1rem;
+}
+
+.printed-wishlist {
+  flex-grow: 2;
+}
+
+.printed-wishlist button {
+  margin: 1rem 0;
+}
+
+.wishlist-table th {
+  border-top: none;
+}
+
+.wishlist-table th:first-child {
+  width: 1rem;
+}
+
+.wishlist-table tr td:last-child {
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.offering {
   background-color: hsla(197, 82.5%, 49.4%, 0.37);
-} */
+}
 
 /* HACK: This overrides zen-table styles, until we don't use them anymore */
-/* .offering:hover {
+.offering:hover {
   background-color: hsla(197, 82.5%, 49.4%, 0.37) !important;
 }
 
@@ -90,9 +119,9 @@ button a:hover {
 
 .potluck-item:hover {
   background-color: hsla(118.1, 93.2%, 40.6%, 0.37) !important;
-} */
+}
 
 /* button a {
   color: var(--gray-dark);
-} */
+}
 /* #endregion */

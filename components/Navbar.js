@@ -40,7 +40,7 @@ const NavBar = () => {
             </li>
 
             <li className='navbar-item'>
-              <Link href='/wishlist'>
+              <Link href='/wishlists'>
                 <a className='nav-link'>Wishlist</a>
               </Link>
             </li>

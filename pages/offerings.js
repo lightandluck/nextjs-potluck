@@ -51,13 +51,12 @@ export default class OfferingsList extends Component {
 
   // TODO: Need to delete offering from wishlists as well.
   deleteOffering(id) {
-    axios.delete('/api/offerings/' + id).then((response) => {
-      console.log(response.data);
-    });
-
-    this.setState({
-      offerings: this.state.offerings.filter((el) => el._id !== id),
-    });
+    // axios.delete('/api/offerings/' + id).then((response) => {
+    //   console.log(response.data);
+    // });
+    // this.setState({
+    //   offerings: this.state.offerings.filter((el) => el._id !== id),
+    // });
   }
 
   addToWishlist(offering) {
@@ -68,7 +67,7 @@ export default class OfferingsList extends Component {
     };
 
     axios
-      .post('/wishlists/add', wishedItem)
+      .post('/api/wishlists', wishedItem)
       .then((res) => {
         console.log(res.data);
       })
@@ -205,7 +204,7 @@ function Offering({ offering, deletedOffering }) {
 // TODO: Figure out how to show only items not on wishlist ---- further, already viewed maybe
 function PotluckItem({ offering, addToWishlist }) {
   return (
-    <tr className='potluck-item'>
+    <tr>
       <td>{offering.playerName}</td>
       <td>{offering.title}</td>
       <td>{offering.description}</td>
