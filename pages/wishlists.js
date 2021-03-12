@@ -301,10 +301,10 @@ export default class DraggableExample extends React.Component {
               >
                 Print Wishlist
               </button>
-              <p>
+              <span>
                 You can view what your trades will look like by pressing the
                 button.
-              </p>
+              </span>
               <p style={{ whiteSpace: 'pre-wrap' }}>{this.state.wantlist}</p>
             </div>
           </div>
