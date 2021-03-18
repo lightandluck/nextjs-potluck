@@ -1,11 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+import {
+  Table,
+  Head,
+  HeaderRow,
+  HeaderCell,
+  Body,
+  Row,
+  Cell,
+} from '@zendeskgarden/react-tables';
 import styled from 'styled-components';
 
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 // const GripIcon = require('@zendeskgarden/svg-icons/src/12/grip.svg').default;
 
-const DraggableRow = styled.tr`
+const DraggableRow = styled(Row)`
   ${(props) =>
     props.isDraggingOver
       ? `
@@ -82,7 +91,7 @@ class DraggableCell extends React.Component {
   }
 
   render() {
-    return <td ref={this.setRef}>{this.props.children}</td>;
+    return <Cell ref={this.setRef}>{this.props.children}</Cell>;
   }
 }
 
@@ -301,21 +310,21 @@ export default class DraggableExample extends React.Component {
           </div>
         </div>
         <DragDropContext onDragEnd={this.onDragEnd}>
-          <table className='table wishlist-table'>
-            <thead>
-              <tr>
+          <Table className='table wishlist-table'>
+            <Head>
+              <HeaderRow>
                 {/* <HeaderCell isMinimum /> */}
-                <th></th>
-                <th>Player</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Official Name</th>
-              </tr>
-            </thead>
+                <HeaderCell></HeaderCell>
+                <HeaderCell>Player</HeaderCell>
+                <HeaderCell>Title</HeaderCell>
+                <HeaderCell>Description</HeaderCell>
+                <HeaderCell>Official Name</HeaderCell>
+              </HeaderRow>
+            </Head>
             <Droppable droppableId='droppable'>
               {(provided, droppableSnapshot) => {
                 return (
-                  <tbody
+                  <Body
                     ref={provided.innerRef}
                     isDraggingOver={droppableSnapshot.isDraggingOver}
                   >
@@ -430,11 +439,11 @@ export default class DraggableExample extends React.Component {
                       </Draggable>
                     ))}
                     {provided.placeholder}
-                  </tbody>
+                  </Body>
                 );
               }}
             </Droppable>
-          </table>
+          </Table>
         </DragDropContext>
       </React.Fragment>
     );
