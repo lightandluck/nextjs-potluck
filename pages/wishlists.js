@@ -178,7 +178,7 @@ export default class DraggableExample extends React.Component {
           });
         } else {
           this.setState({
-            wishlistItems: response.data.offerings,
+            wishlistItems: response.data.offerings || [],
           });
         }
       })
@@ -262,15 +262,13 @@ export default class DraggableExample extends React.Component {
             required
             className='form-control'
             value={this.state.playerName}
-            onChange={this.onChangePlayerName}
-          >
+            onChange={this.onChangePlayerName}>
             {this.state.players.map(function (player) {
               return (
                 <option
                   key={player.name}
                   value={player.name}
-                  data-playerid={player._id}
-                >
+                  data-playerid={player._id}>
                   {player.name}
                 </option>
               );
@@ -288,8 +286,7 @@ export default class DraggableExample extends React.Component {
               <button
                 type='button'
                 className='btn btn-primary btn-small'
-                onClick={this.printWantlist}
-              >
+                onClick={this.printWantlist}>
                 Print Wishlist
               </button>
               <p>
@@ -317,14 +314,12 @@ export default class DraggableExample extends React.Component {
                 return (
                   <tbody
                     ref={provided.innerRef}
-                    isDraggingOver={droppableSnapshot.isDraggingOver}
-                  >
+                    isDraggingOver={droppableSnapshot.isDraggingOver}>
                     {this.state.wishlistItems.map((item, index) => (
                       <Draggable
                         key={item._id}
                         draggableId={item._id}
-                        index={index}
-                      >
+                        index={index}>
                         {(provided, snapshot) => (
                           <DraggableRow
                             className={
@@ -340,19 +335,16 @@ export default class DraggableExample extends React.Component {
                             {...provided.draggableProps.style}
                             {...provided.draggableProps}
                             id={item._id}
-                            {...provided.dragHandleProps}
-                          >
+                            {...provided.dragHandleProps}>
                             <DraggableCell
-                              isDragOccurring={snapshot.isDragging}
-                            >
+                              isDragOccurring={snapshot.isDragging}>
                               <svg
                                 xmlns='http://www.w3.org/2000/svg'
                                 width='12'
                                 height='12'
                                 viewBox='0 0 12 12'
                                 focusable='false'
-                                role='presentation'
-                              >
+                                role='presentation'>
                                 <g fill='currentColor'>
                                   <rect
                                     width='2'
@@ -360,69 +352,59 @@ export default class DraggableExample extends React.Component {
                                     x='3'
                                     y='1'
                                     rx='0.5'
-                                    ry='0.5'
-                                  ></rect>
+                                    ry='0.5'></rect>
                                   <rect
                                     width='2'
                                     height='2'
                                     x='7'
                                     y='1'
                                     rx='0.5'
-                                    ry='0.5'
-                                  ></rect>
+                                    ry='0.5'></rect>
                                   <rect
                                     width='2'
                                     height='2'
                                     x='3'
                                     y='5'
                                     rx='0.5'
-                                    ry='0.5'
-                                  ></rect>
+                                    ry='0.5'></rect>
                                   <rect
                                     width='2'
                                     height='2'
                                     x='7'
                                     y='5'
                                     rx='0.5'
-                                    ry='0.5'
-                                  ></rect>
+                                    ry='0.5'></rect>
                                   <rect
                                     width='2'
                                     height='2'
                                     x='3'
                                     y='9'
                                     rx='0.5'
-                                    ry='0.5'
-                                  ></rect>
+                                    ry='0.5'></rect>
                                   <rect
                                     width='2'
                                     height='2'
                                     x='7'
                                     y='9'
                                     rx='0.5'
-                                    ry='0.5'
-                                  ></rect>
+                                    ry='0.5'></rect>
                                 </g>
                               </svg>
                             </DraggableCell>
                             <DraggableCell
-                              isDragOccurring={snapshot.isDragging}
-                            >
+                              isDragOccurring={snapshot.isDragging}>
                               {item.offeringId.playerName}
                             </DraggableCell>
                             <DraggableCell
-                              isDragOccurring={snapshot.isDragging}
-                            >
+                              isDragOccurring={snapshot.isDragging}>
                               {item.offeringId.title}
                             </DraggableCell>
                             <DraggableCell
-                              isDragOccurring={snapshot.isDragging}
-                            >
+                              isDragOccurring={snapshot.isDragging}>
                               {item.offeringId.description}
                             </DraggableCell>
                             <DraggableCell
-                              isDragOccurring={snapshot.isDragging}
-                            >
+                              isDragOccurring={snapshot.isDragging}>
                               {item.offeringId.officialName}
                             </DraggableCell>
                           </DraggableRow>
