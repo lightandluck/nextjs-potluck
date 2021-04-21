@@ -55,46 +55,25 @@ export default async function handler(req, res) {
       break;
 
     case 'POST':
-      let ourstuff = await Wishlist.find({
+      const updatedWishlists = await Wishlist.find({
         'offerings.offeringId': ObjectId(req.query.id),
       }).then((wishlists) => {
-        let updatedWishlists = [];
-
-        for (const { offerings, playerId } of wishlists) {
-          let filteredWishlist = offerings
+        return wishlists.map(({ offerings, playerId }) => {
+          const filteredWishlist = offerings
             .filter(({ offeringId }) => String(offeringId) !== req.query.id)
             .map((item) => ({
               isSteward: item['isSteward'],
               offeringId: item['offeringId'],
             }));
 
-          let update = {
+          return {
             playerId: playerId,
             offerings: filteredWishlist, // TODO: This is where the naming gets confusing between offerings and wishlist
           };
-
-          updatedWishlists.push(update);
-
-          // Debugging Code
-          // console.log(wishlist.offerings);
-
-          // let filtered = wishlist.offerings.filter(
-          //   (offering) => offering.offeringId != req.query.id
-          // );
-          // console.log('-----------');
-          // console.log(filtered);
-
-          // for (const i of wishlist.offerings) {
-          //   console.log(`Item: ${i.offeringId}, Type: ${typeof i}`);
-          //   console.log(`Qury: ${req.query.id}, Type: ${typeof req.query.id}`);
-          //   console.log('--');
-          // }
-        }
-
-        return updatedWishlists;
+        });
       });
 
-      res.status(200).json(ourstuff);
+      res.status(200).json(updatedWishlists);
 
       // const query = Wishlist.find({ playerId: req.query.id });
 
@@ -125,3 +104,18 @@ export default async function handler(req, res) {
       break;
   }
 }
+
+// Debugging Code
+// console.log(wishlist.offerings);
+
+// let filtered = wishlist.offerings.filter(
+//   (offering) => offering.offeringId != req.query.id
+// );
+// console.log('-----------');
+// console.log(filtered);
+
+// for (const i of wishlist.offerings) {
+//   console.log(`Item: ${i.offeringId}, Type: ${typeof i}`);
+//   console.log(`Qury: ${req.query.id}, Type: ${typeof req.query.id}`);
+//   console.log('--');
+// }
