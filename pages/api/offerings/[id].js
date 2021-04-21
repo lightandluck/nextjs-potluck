@@ -1,5 +1,9 @@
 import dbConnect from '../../../util/dbConnect';
 import Offering from '../../../models/offering.model';
+import Wishlist from '../../../models/wishlist.model';
+import mongoose from 'mongoose';
+
+const ObjectId = mongoose.Types.ObjectId;
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -12,6 +16,7 @@ export default async function handler(req, res) {
         .catch((error) =>
           res.status(400).json({ type: error.name, message: error.message })
         );
+
       break;
     case 'PUT':
       Offering.findById(req.query.id)
@@ -49,8 +54,73 @@ export default async function handler(req, res) {
         );
       break;
 
+    case 'POST':
+      let ourstuff = await Wishlist.find({
+        'offerings.offeringId': ObjectId(req.query.id),
+      }).then((wishlists) => {
+        let updatedWishlists = [];
+
+        for (const { offerings, playerId } of wishlists) {
+          let filteredWishlist = offerings
+            .filter(({ offeringId }) => String(offeringId) !== req.query.id)
+            .map((item) => ({
+              isSteward: item['isSteward'],
+              offeringId: item['offeringId'],
+            }));
+
+          let update = {
+            playerId: playerId,
+            offerings: filteredWishlist, // TODO: This is where the naming gets confusing between offerings and wishlist
+          };
+
+          updatedWishlists.push(update);
+
+          // Debugging Code
+          // console.log(wishlist.offerings);
+
+          // let filtered = wishlist.offerings.filter(
+          //   (offering) => offering.offeringId != req.query.id
+          // );
+          // console.log('-----------');
+          // console.log(filtered);
+
+          // for (const i of wishlist.offerings) {
+          //   console.log(`Item: ${i.offeringId}, Type: ${typeof i}`);
+          //   console.log(`Qury: ${req.query.id}, Type: ${typeof req.query.id}`);
+          //   console.log('--');
+          // }
+        }
+
+        return updatedWishlists;
+      });
+
+      res.status(200).json(ourstuff);
+
+      // const query = Wishlist.find({ playerId: req.query.id });
+
+      // query
+      //   .updateOne(
+      //     {},
+      //     {
+      //       $set: { offerings: updateWishlist },
+      //     }
+      //   )
+      //   .then((info) => {
+      //     if (info.nModified === 0) {
+      //       res.status(404).json({
+      //         message: 'No wishlist associated with that user found.',
+      //         info: info,
+      //       });
+      //     } else {
+      //       res.json({ message: 'Wishlist updated!', info: info });
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     res.status(400).json({ type: error.name, message: error.message });
+      //   });
+      break;
     default:
-      res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
+      res.setHeader('Allow', ['GET', 'PUT', 'DELETE', 'POST']);
       res.status(405).json({ message: `Method ${method} Not Allowed` });
       break;
   }
