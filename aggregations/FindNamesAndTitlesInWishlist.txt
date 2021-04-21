@@ -1,0 +1,11 @@
+[{$lookup: {
+  from: 'players',
+  localField: 'playerId',
+  foreignField: '_id',
+  as: 'player'
+}}, {$lookup: {
+  from: 'offerings',
+  localField: 'offerings.offeringId',
+  foreignField: '_id',
+  as: 'offeringTitles'
+}}]
