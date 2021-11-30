@@ -45,10 +45,62 @@ export default async function handler(req, res) {
         .catch((err) => res.status(400).json('Error: ' + err));
       break;
     case 'DELETE':
-      Offering.findByIdAndDelete(req.query.id)
-        .then((deletedOffering) =>
-          res.json({ success: true, deletedOffering: deletedOffering })
-        )
+      const queryOfferingId = req.query.id;
+
+      Offering.findByIdAndDelete(queryOfferingId)
+        .then(async (deletedOffering) => {
+          const updatedWishlists = await Wishlist.find({
+            'offerings.offeringId': ObjectId(queryOfferingId),
+          }).then((wishlists) => {
+            return wishlists.map(({ offerings, playerId }) => {
+              const filteredOfferings = offerings
+                .filter(
+                  ({ offeringId }) => String(offeringId) !== queryOfferingId
+                )
+                .map((item) => ({
+                  isSteward: item['isSteward'],
+                  offeringId: item['offeringId'],
+                }));
+
+              return {
+                playerId,
+                offerings: filteredOfferings,
+                // TODO: This is where the naming gets confusing between offerings and wishlist
+                // because wishlist is initially made up of your offerings
+              };
+            });
+          });
+
+          // TODO: Need to figure out how to error handle correctly when deleting and
+          // how to get feedback from this operation
+          const messages = [];
+          for (const { offerings, playerId } of updatedWishlists) {
+            const query = Wishlist.find({ playerId: playerId });
+
+            query
+              .updateOne(
+                {},
+                {
+                  $set: { offerings: offerings },
+                }
+              )
+              .then((info) => {
+                if (info.nModified === 0) {
+                  messages.push({
+                    message: 'No wishlist associated with that user found.',
+                    info: info,
+                  });
+                } else {
+                  messages.push({ message: 'Wishlist updated!', info: info });
+                }
+              })
+              .catch((error) => {
+                messages.push({ type: error.name, message: error.message });
+              });
+          }
+
+          res.status(200).json(messages);
+        })
         .catch((error) =>
           res.status(400).json({ name: error.name, message: error.message })
         );
@@ -59,7 +111,7 @@ export default async function handler(req, res) {
         'offerings.offeringId': ObjectId(req.query.id),
       }).then((wishlists) => {
         return wishlists.map(({ offerings, playerId }) => {
-          const filteredWishlist = offerings
+          const filteredOfferings = offerings
             .filter(({ offeringId }) => String(offeringId) !== req.query.id)
             .map((item) => ({
               isSteward: item['isSteward'],
@@ -67,36 +119,41 @@ export default async function handler(req, res) {
             }));
 
           return {
-            playerId: playerId,
-            offerings: filteredWishlist, // TODO: This is where the naming gets confusing between offerings and wishlist
+            playerId,
+            offerings: filteredOfferings,
+            // TODO: This is where the naming gets confusing between offerings and wishlist
+            // because wishlist is initially made up of your offerings
           };
         });
       });
 
-      res.status(200).json(updatedWishlists);
+      const messages = [];
+      for (const { offerings, playerId } of updatedWishlists) {
+        const query = await Wishlist.find({ playerId: playerId });
 
-      // const query = Wishlist.find({ playerId: req.query.id });
+        query
+          .updateOne(
+            {},
+            {
+              $set: { offerings: offerings },
+            }
+          )
+          .then((info) => {
+            if (info.nModified === 0) {
+              messages.push({
+                message: 'No wishlist associated with that user found.',
+                info: info,
+              });
+            } else {
+              messages.push({ message: 'Wishlist updated!', info: info });
+            }
+          })
+          .catch((error) => {
+            messages.push({ type: error.name, message: error.message });
+          });
+      }
 
-      // query
-      //   .updateOne(
-      //     {},
-      //     {
-      //       $set: { offerings: updateWishlist },
-      //     }
-      //   )
-      //   .then((info) => {
-      //     if (info.nModified === 0) {
-      //       res.status(404).json({
-      //         message: 'No wishlist associated with that user found.',
-      //         info: info,
-      //       });
-      //     } else {
-      //       res.json({ message: 'Wishlist updated!', info: info });
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     res.status(400).json({ type: error.name, message: error.message });
-      //   });
+      res.json(messages);
       break;
     default:
       res.setHeader('Allow', ['GET', 'PUT', 'DELETE', 'POST']);

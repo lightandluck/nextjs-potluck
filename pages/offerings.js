@@ -51,12 +51,14 @@ export default class OfferingsList extends Component {
 
   // TODO: Need to delete offering from wishlists as well.
   deleteOffering(id) {
-    // axios.delete('/api/offerings/' + id).then((response) => {
-    //   console.log(response.data);
-    // });
-    // this.setState({
-    //   offerings: this.state.offerings.filter((el) => el._id !== id),
-    // });
+    axios.delete('/api/offerings/' + id).then((response) => {
+      console.log(response.data);
+    });
+
+    // TODO: This is problematic (Need to confirm deletion before updating display)
+    this.setState({
+      offerings: this.state.offerings.filter((el) => el._id !== id),
+    });
   }
 
   addToWishlist(offering) {
@@ -130,15 +132,13 @@ export default class OfferingsList extends Component {
             required
             className='form-control'
             value={this.state.playerName}
-            onChange={this.onChangePlayerName}
-          >
+            onChange={this.onChangePlayerName}>
             {this.state.players.map(function (player) {
               return (
                 <option
                   key={player._id}
                   value={player.name}
-                  data-playerid={player._id}
-                >
+                  data-playerid={player._id}>
                   {player.name}
                 </option>
               );
@@ -176,7 +176,7 @@ export default class OfferingsList extends Component {
 }
 
 // TODO: Add confirmation to delete action!
-function Offering({ offering, deletedOffering }) {
+function Offering({ offering, deleteOffering }) {
   return (
     <tr>
       <td>{offering.playerName}</td>
@@ -186,13 +186,12 @@ function Offering({ offering, deletedOffering }) {
         <button type='button' className='btn btn-info btn-sm'>
           <Link href={'/edit/' + offering._id}>Edit</Link>
         </button>{' '}
-        <Link href=''>
+        <Link href='' passHref>
           <a
             className='deleteLink'
             onClick={() => {
               deleteOffering(offering._id);
-            }}
-          >
+            }}>
             Delete
           </a>
         </Link>
@@ -212,8 +211,7 @@ function PotluckItem({ offering, addToWishlist }) {
         <button
           type='button'
           className='btn btn-primary btn-sm'
-          onClick={() => addToWishlist(offering)}
-        >
+          onClick={() => addToWishlist(offering)}>
           + wishlist
         </button>
       </td>
