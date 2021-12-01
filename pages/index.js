@@ -9,7 +9,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Testing deployment</h1>
+        <h1>Potluck Prototype</h1>
 
         <p>
           This is an prototype for creating wantlists for TradeMaximizer. The
