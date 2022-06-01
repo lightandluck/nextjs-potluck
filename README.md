@@ -77,6 +77,7 @@ To create the wantlists instead of using a grid like the OLWLG and Abecorn, or s
 - The original TradeMaximizer: https://github.com/chrisokasaki/TradeMaximizer
 - Online Wantlist Generator: https://boardgamegeek.com/wiki/page/OLWLG#toc12
 - TradeMaximizer wiki: https://boardgamegeek.com/wiki/page/TradeMaximizer
+- Javascript Implementation of TradeMaximizer: https://boardgamegeek.com/thread/2818260/javascript-implementation-trademaximizer
 
 ## Links to useful things
 
