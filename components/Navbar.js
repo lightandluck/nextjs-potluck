@@ -15,39 +15,38 @@ const NavBar = () => {
           data-target='#navbarSupportedContent'
           aria-controls='navbarSupportedContent'
           aria-expanded='false'
-          aria-label='Toggle navigation'
-        >
+          aria-label='Toggle navigation'>
           <span className='navbar-toggler-icon'></span>
         </button>
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav mr-auto'>
             <li className='navbar-item'>
               <Link href='/player'>
-                <a className='nav-link'>Create Player</a>
+                <a className='nav-link'>1. Create Player</a>
               </Link>
             </li>
 
             <li className='navbar-item'>
               <Link href='/create'>
-                <a className='nav-link'>Create Offering</a>
+                <a className='nav-link'>2. Create Offering</a>
               </Link>
             </li>
 
             <li className='navbar-item'>
               <Link href='/offerings'>
-                <a className='nav-link'>Offerings</a>
+                <a className='nav-link'>3. Offerings</a>
               </Link>
             </li>
 
             <li className='navbar-item'>
               <Link href='/wishlists'>
-                <a className='nav-link'>Wishlist</a>
+                <a className='nav-link'>4. Wishlist</a>
               </Link>
             </li>
 
             <li className='navbar-item'>
               <Link href='/totalwantlist'>
-                <a className='nav-link'>Total Wantlist</a>
+                <a className='nav-link'>5. Total Wantlist</a>
               </Link>
             </li>
           </ul>
