@@ -9,6 +9,7 @@ export class EditOffering extends Component {
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onCancel = this.onCancel.bind(this);
 
     this.state = {
       playerName: '',
@@ -50,6 +51,10 @@ export class EditOffering extends Component {
     });
   }
 
+  onCancel(e) {
+    window.location = '/offerings';
+  }
+
   async onSubmit(e) {
     e.preventDefault();
     const { offeringId } = this.props.router.query;
@@ -71,6 +76,8 @@ export class EditOffering extends Component {
           offeringId: offeringId,
           isSteward: true,
         };
+
+        window.location = '/offerings';
 
         // TODO: the item updates, and so does wishlist, but we're getting a console error
 
@@ -118,13 +125,21 @@ export class EditOffering extends Component {
               onChange={this.onChangeDescription}></textarea>
           </div>
 
-          <div className='form-group'>
+          <div className='form-group d-flex p-2 justify-content-between'>
             <input
               type='submit'
               value='Edit Offering'
               className='btn btn-primary'
             />
+            <input
+              type='button'
+              value='Cancel'
+              className='btn btn-secondary'
+              onClick={this.onCancel}
+            />
           </div>
+
+          <div className='form-group'></div>
         </form>
       </div>
     );
