@@ -58,7 +58,6 @@ export default async function handler(req, res) {
                   ({ offeringId }) => String(offeringId) !== queryOfferingId
                 )
                 .map((item) => ({
-                  isSteward: item['isSteward'],
                   offeringId: item['offeringId'],
                 }));
 
@@ -114,7 +113,6 @@ export default async function handler(req, res) {
           const filteredOfferings = offerings
             .filter(({ offeringId }) => String(offeringId) !== req.query.id)
             .map((item) => ({
-              isSteward: item['isSteward'],
               offeringId: item['offeringId'],
             }));
 
