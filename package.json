@@ -14,9 +14,10 @@
     "mongodb": "^3.6.4",
     "mongoose": "^5.10.11",
     "next": "^10.0.8",
-    "react": "^17.0.1",
+    "node-mocks-http": "^1.11.0",
+    "react": "^16.8.5",
     "react-beautiful-dnd": "^13.0.0",
-    "react-dom": "^17.0.1",
+    "react-dom": "^16.8.5",
     "styled-components": "^5.2.1"
   },
   "license": "GPLv3",
