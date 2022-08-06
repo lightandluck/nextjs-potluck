@@ -1,5 +1,5 @@
-import dbConnect from '../../util/dbConnect';
-import Player from '../../models/player.model';
+import dbConnect from '../../../util/dbConnect';
+import Player from '../../../models/player.model';
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -14,6 +14,7 @@ export default async function handler(req, res) {
         );
       break;
     case 'POST':
+      // TODO: Careful about non-unique names and what gets deleted
       try {
         const name = req.body.name;
 
