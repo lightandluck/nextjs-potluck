@@ -47,33 +47,28 @@ export default async function handler(req, res) {
     case 'DELETE':
       const queryOfferingId = req.query.id;
 
-      Offering.findByIdAndDelete(queryOfferingId)
-        .then(async (deletedOffering) => {
-          const updatedWishlists = await Wishlist.find({
-            'offerings.offeringId': ObjectId(queryOfferingId),
-          }).then((wishlists) => {
-            return wishlists.map(({ offerings, playerId }) => {
-              const filteredOfferings = offerings
-                .filter(
-                  ({ offeringId }) => String(offeringId) !== queryOfferingId
-                )
-                .map((item) => ({
-                  offeringId: item['offeringId'],
-                }));
+      await Offering.findByIdAndDelete(queryOfferingId).catch((error) =>
+        res.status(400).json({ name: error.name, message: error.message })
+      );
+      let updatedWishlists = '';
+      updatedWishlists = await Wishlist.find({
+        'offerings.offeringId': ObjectId(queryOfferingId),
+      })
+        .then((wishlists) => {
+          const newWishlists = wishlists.map(({ offerings, playerId }) => {
+            const filteredOfferings = offerings.filter(
+              ({ offeringId }) =>
+                offeringId.toString() !== queryOfferingId.toString()
+            );
 
-              return {
-                playerId,
-                offerings: filteredOfferings,
-                // TODO: This is where the naming gets confusing between offerings and wishlist
-                // because wishlist is initially made up of your offerings
-              };
-            });
+            return {
+              playerId,
+              offerings: filteredOfferings,
+            };
           });
 
-          // TODO: Need to figure out how to error handle correctly when deleting and
-          // how to get feedback from this operation
           const messages = [];
-          for (const { offerings, playerId } of updatedWishlists) {
+          for (const { offerings, playerId } of newWishlists) {
             const query = Wishlist.find({ playerId: playerId });
 
             query
@@ -97,64 +92,14 @@ export default async function handler(req, res) {
                 messages.push({ type: error.name, message: error.message });
               });
           }
-
           res.status(200).json(messages);
         })
         .catch((error) =>
           res.status(400).json({ name: error.name, message: error.message })
         );
       break;
-
-    case 'POST':
-      const updatedWishlists = await Wishlist.find({
-        'offerings.offeringId': ObjectId(req.query.id),
-      }).then((wishlists) => {
-        return wishlists.map(({ offerings, playerId }) => {
-          const filteredOfferings = offerings
-            .filter(({ offeringId }) => String(offeringId) !== req.query.id)
-            .map((item) => ({
-              offeringId: item['offeringId'],
-            }));
-
-          return {
-            playerId,
-            offerings: filteredOfferings,
-            // TODO: This is where the naming gets confusing between offerings and wishlist
-            // because wishlist is initially made up of your offerings
-          };
-        });
-      });
-
-      const messages = [];
-      for (const { offerings, playerId } of updatedWishlists) {
-        const query = await Wishlist.find({ playerId: playerId });
-
-        query
-          .updateOne(
-            {},
-            {
-              $set: { offerings: offerings },
-            }
-          )
-          .then((info) => {
-            if (info.nModified === 0) {
-              messages.push({
-                message: 'No wishlist associated with that user found.',
-                info: info,
-              });
-            } else {
-              messages.push({ message: 'Wishlist updated!', info: info });
-            }
-          })
-          .catch((error) => {
-            messages.push({ type: error.name, message: error.message });
-          });
-      }
-
-      res.json(messages);
-      break;
     default:
-      res.setHeader('Allow', ['GET', 'PUT', 'DELETE', 'POST']);
+      res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
       res.status(405).json({ message: `Method ${method} Not Allowed` });
       break;
   }
