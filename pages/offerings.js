@@ -50,15 +50,19 @@ export default class OfferingsList extends Component {
   }
 
   // TODO: Need to delete offering from wishlists as well.
-  deleteOffering(id) {
-    axios.delete('/api/offerings/' + id).then((response) => {
+  async deleteOffering(id) {
+    await axios.delete('/api/offerings/' + id).then((response) => {
       console.log(response.data);
     });
 
-    // TODO: This is problematic (Need to confirm deletion before updating display)
-    this.setState({
-      offerings: this.state.offerings.filter((el) => el._id !== id),
-    });
+    await axios
+      .get('/api/offerings')
+      .then((response) => {
+        this.setState({ offerings: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   addToWishlist(offering) {
