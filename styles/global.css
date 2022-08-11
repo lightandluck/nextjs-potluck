@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--dark);
+  color: black;
 }
 
 code {
@@ -17,14 +17,27 @@ main {
   padding: 1rem 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: black;
+}
+
+.form-control {
+  color: black;
+}
+
 /* #region  NAVBAR */
 nav {
   font-weight: 500;
   margin-bottom: 1rem;
 }
 
+.navbar-brand {
+  font-size: 1.50rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(33, 33, 33, 0.6);
+  color: rgba(33, 33, 33, 1);
 }
 
 .table {
@@ -34,6 +47,10 @@ nav {
 .table td,
 .table th {
   vertical-align: middle;
+}
+
+.table-info {
+  font-size: 1.25rem;
 }
 
 .deleteLink {
@@ -46,6 +63,10 @@ button a,
 button a:hover {
   color: #fff;
   text-decoration: none;
+}
+
+.btn {
+  font-weight: 500;
 }
 
 /* TODO: Fix positioning of 'Edit' button for shorter descriptions eg Hanh */
@@ -77,6 +98,8 @@ tr:focus {
   }
 }
 
+
+
 .printed-wishlist {
   flex-grow: 2;
 }
@@ -85,6 +108,9 @@ tr:focus {
   margin: 1rem 0;
 }
 
+.wishlist-table th{
+  font-size: 1.5rem;
+}
 .wishlist-table th {
   border-top: none;
 }
@@ -98,17 +124,28 @@ tr:focus {
   padding-right: 1rem;
 }
 
+.table tr td:last-child {
+  width: 12%;
+}
+
+@media (max-width: 700px) {
+  .table tr td:last-child {
+    width: 22%;
+  }
+}
+
 .offering {
-  background-color: hsla(197, 82.5%, 49.4%, 0.37);
+  background-color: hsla(33, 82.5%, 49.4%, 0.37);
 }
 
 /* HACK: This overrides zen-table styles, until we don't use them anymore */
 .offering:hover {
-  background-color: hsla(197, 82.5%, 49.4%, 0.37) !important;
+  background-color: hsla(33, 82.5%, 49.4%, 0.37) !important;
 }
 
 .potluck-item {
   background-color: hsla(118.1, 93.2%, 40.6%, 0.37);
+  font-weight: 450;
 }
 
 .potluck-item:hover {
