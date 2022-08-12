@@ -250,8 +250,6 @@ export default class DraggableExample extends React.Component {
     this.setState({ wantlist: wantlist.trim() });
   }
 
-  // TODO: Add ability to delete from wishlist
-
   render() {
     return (
       <React.Fragment>
