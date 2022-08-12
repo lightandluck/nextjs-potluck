@@ -131,7 +131,7 @@ export default class CreateOffering extends Component {
         <h3>Create New Offering</h3>
         {this.state.showSuccessAlert ? (
           <div className='alert alert-success'>
-            <strong>Well done!</strong> New offering successfully created.
+            <strong>Success!</strong> New offering created.
           </div>
         ) : null}
         {this.state.showErrorAlert ? (
@@ -148,15 +148,13 @@ export default class CreateOffering extends Component {
               required
               className='form-control'
               value={this.state.playerName}
-              onChange={this.onChangePlayerName}
-            >
+              onChange={this.onChangePlayerName}>
               {this.state.players.map(function (player) {
                 return (
                   <option
                     key={player._id}
                     data-playerid={player._id}
-                    value={player.name}
-                  >
+                    value={player.name}>
                     {player.name}
                   </option>
                 );
@@ -177,8 +175,7 @@ export default class CreateOffering extends Component {
             <textarea
               className='form-control'
               value={this.state.description}
-              onChange={this.onChangeDescription}
-            ></textarea>
+              onChange={this.onChangeDescription}></textarea>
           </div>
 
           <div className='form-group'>
