@@ -11,6 +11,9 @@ export default class CreateUser extends Component {
 
     this.state = {
       name: '',
+      showSuccessAlert: false,
+      showErrorAlert: false,
+      errorMessage: '',
     };
   }
 
@@ -20,7 +23,7 @@ export default class CreateUser extends Component {
     });
   }
 
-  onSubmit(e) {
+  async onSubmit(e) {
     e.preventDefault();
 
     // ADDTEST: Changed object to not have name field ex: {yaya: this.state.name}
@@ -28,7 +31,7 @@ export default class CreateUser extends Component {
       name: this.state.name,
     };
 
-    axios
+    await axios
       .post('/api/players', user)
       .then((res) => {
         console.log('Player added:');
@@ -38,6 +41,7 @@ export default class CreateUser extends Component {
         localStorage.setItem('playerName', name);
         localStorage.setItem('playerId', _id);
 
+        this.setState({ showSuccessAlert: true });
         // Redirects to /create, so user can begin creating offerings immediately
         // window.location = '/create';
       })
@@ -53,6 +57,17 @@ export default class CreateUser extends Component {
         </Head>
         <div>
           <h3>Create New Player</h3>
+          {this.state.showSuccessAlert ? (
+            <div className='alert alert-success'>
+              <strong>Success!</strong> New player created.
+            </div>
+          ) : null}
+          {this.state.showErrorAlert ? (
+            <div className='alert alert-danger'>
+              <strong>We're sorry!</strong> Something went wrong.
+              <pre>{this.state.errorMessage}</pre>
+            </div>
+          ) : null}
           <form onSubmit={this.onSubmit}>
             <div className='form-group'>
               <label>Name: </label>
