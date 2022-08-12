@@ -145,7 +145,7 @@ export default class DraggableExample extends React.Component {
           axios
             .get('/api/wishlists/' + playerId)
             .then((response) => {
-              if (response.data === null) {
+              if (!response.data) {
                 this.setState({
                   wishlistItems: [],
                 });
