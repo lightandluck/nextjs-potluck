@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Head from 'next/head';
 import axios from 'axios';
+import CloudinaryUploadWidget from '../components/CloudinaryUploadWidget';
 
 // TODO:  Add feedback after done creating offering. Where to go afterwards?
 //        Can send user to blank form to create another offering,
@@ -128,6 +130,11 @@ export default class CreateOffering extends Component {
   render() {
     return (
       <div>
+        <Head>
+          <script
+            src='https://upload-widget.cloudinary.com/global/all.js'
+            type='text/javascript'></script>
+        </Head>
         <h3>Create New Offering</h3>
         {this.state.showSuccessAlert ? (
           <div className='alert alert-success'>
@@ -177,7 +184,8 @@ export default class CreateOffering extends Component {
               value={this.state.description}
               onChange={this.onChangeDescription}></textarea>
           </div>
-
+          <CloudinaryUploadWidget />
+          <hr />
           <div className='form-group'>
             <input
               type='submit'
