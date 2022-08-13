@@ -9,6 +9,7 @@ const offeringSchema = new Schema(
     officialName: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
+    imageURLS: { type: Array, require: false },
   },
   {
     timestamps: true,
