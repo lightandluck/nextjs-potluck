@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         );
       break;
     case 'POST':
-      const { playerName, playerId, title, description } = req.body;
+      const { playerName, playerId, title, description, imageURLs } = req.body;
       const officialName = await generateOfficialName();
 
       const newOffering = new Offering({
@@ -24,6 +24,7 @@ export default async function handler(req, res) {
         officialName,
         title,
         description,
+        imageURLs,
       });
 
       newOffering
