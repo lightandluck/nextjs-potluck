@@ -26,6 +26,7 @@ export default async function handler(req, res) {
             officialName: offering.officialName,
             title: offering.title,
             description: offering.description,
+            imageURLs: offering.imageURLs,
           } = req.body);
 
           /* #region Equivalent to above assignment  */

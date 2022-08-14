@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
-import CloudinaryUploadWidget from '../components/CloudinaryUploadWidget';
 
 // TODO:  Add feedback after done creating offering. Where to go afterwards?
 //        Can send user to blank form to create another offering,
@@ -21,6 +20,8 @@ export default class CreateOffering extends Component {
       playerId: '',
       title: '',
       description: '',
+      imageURLs: [],
+      imageSrc: '',
       players: [],
       showSuccessAlert: false,
       showErrorAlert: false,
@@ -31,6 +32,31 @@ export default class CreateOffering extends Component {
   }
 
   componentDidMount() {
+    let myWidget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: 'dkp0gitg9',
+        uploadPreset: 'potluck-photos',
+        sources: ['local', 'camera'],
+      },
+      (error, result) => {
+        if (!error && result && result.event === 'success') {
+          console.log('Done! Here is the image info: ', result.info);
+          this.setState((prevState) => ({
+            imageSrc: result.info.thumbnail_url,
+            imageURLs: [...prevState.imageURLs, result.info.url],
+          }));
+        }
+      }
+    );
+    document.getElementById('upload_widget').addEventListener(
+      'click',
+      function (e) {
+        e.preventDefault();
+        myWidget.open();
+      },
+      false
+    );
+
     axios
       .get('/api/players')
       .then((response) => {
@@ -83,6 +109,7 @@ export default class CreateOffering extends Component {
       playerId: this.state.playerId,
       title: this.state.title,
       description: this.state.description,
+      imageURLs: this.state.imageURLs,
     };
 
     await axios
@@ -106,6 +133,7 @@ export default class CreateOffering extends Component {
               showSuccessAlert: true,
               description: '',
               title: '',
+              imageURLs: [],
             });
           })
           .catch((res) => {
@@ -184,7 +212,10 @@ export default class CreateOffering extends Component {
               value={this.state.description}
               onChange={this.onChangeDescription}></textarea>
           </div>
-          <CloudinaryUploadWidget />
+          <button id='upload_widget' className='btn btn-primary'>
+            Upload photo
+          </button>
+          <img alt='' src={this.state.imageSrc} />
           <hr />
           <div className='form-group'>
             <input
