@@ -78,7 +78,7 @@ button a:hover {
 
 #photo-preview img {
   flex-basis: 32%;
-  flex-grow: 1;
+  width: 200px;
 }
 
 /* TODO: Fix positioning of 'Edit' button for shorter descriptions eg Hanh */
