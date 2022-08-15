@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import Head from 'next/head';
+import Script from 'next/script';
 import { withRouter } from 'next/router';
 import axios from 'axios';
+import PhotoPreview from '../../components/PhotoPreview';
 
 export class EditOffering extends Component {
   constructor(props) {
@@ -17,10 +20,36 @@ export class EditOffering extends Component {
       officialName: '',
       title: '',
       description: '',
+      imageURLs: [],
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    let myWidget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: 'dkp0gitg9',
+        uploadPreset: 'potluck-images',
+        sources: ['local', 'camera'],
+      },
+      (error, result) => {
+        if (!error && result && result.event === 'success') {
+          console.log('Done! Here is the image info: ', result.info);
+          this.setState((prevState) => ({
+            imageURLs: [...prevState.imageURLs, result.info.url],
+          }));
+        }
+      }
+    );
+
+    document.getElementById('upload_widget').addEventListener(
+      'click',
+      function (e) {
+        e.preventDefault();
+        myWidget.open();
+      },
+      false
+    );
+
     const { offeringId } = this.props.router.query;
 
     axios
@@ -32,6 +61,7 @@ export class EditOffering extends Component {
           officialName: response.data.officialName,
           title: response.data.title,
           description: response.data.description,
+          imageURLs: response.data.imageURLs,
         });
       })
       .catch((error) => {
@@ -64,6 +94,7 @@ export class EditOffering extends Component {
       officialName: this.state.officialName,
       title: this.state.title,
       description: this.state.description,
+      imageURLs: this.state.imageURLs,
     };
 
     console.log(offering);
@@ -102,7 +133,10 @@ export class EditOffering extends Component {
   render() {
     return (
       <div>
-        <h3>Edit Offering Log</h3>
+        <Script
+          src='https://upload-widget.cloudinary.com/global/all.js'
+          strategy='beforeInteractive'></Script>
+        <h3>Edit Offering</h3>
         <form onSubmit={this.onSubmit}>
           <div className='form-group'>
             <label>Player name: </label>
@@ -124,8 +158,18 @@ export class EditOffering extends Component {
               value={this.state.description}
               onChange={this.onChangeDescription}></textarea>
           </div>
+          <button id='upload_widget' className='btn btn-warning'>
+            Upload photo
+          </button>
 
-          <div className='form-group d-flex p-2 justify-content-between'>
+          {this.state.imageURLs.length ? (
+            <PhotoPreview imageURLs={this.state.imageURLs} />
+          ) : (
+            ''
+          )}
+
+          <hr />
+          <div className='form-group d-flex justify-content-between'>
             <input
               type='submit'
               value='Edit Offering'

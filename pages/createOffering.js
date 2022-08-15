@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
+import Script from 'next/script';
 import axios from 'axios';
 import PhotoPreview from '../components/PhotoPreview';
 
@@ -159,11 +160,9 @@ export default class CreateOffering extends Component {
   render() {
     return (
       <div>
-        <Head>
-          <script
-            src='https://upload-widget.cloudinary.com/global/all.js'
-            type='text/javascript'></script>
-        </Head>
+        <Script
+          src='https://upload-widget.cloudinary.com/global/all.js'
+          strategy='beforeInteractive'></Script>
         <h3>Create New Offering</h3>
         {this.state.showSuccessAlert ? (
           <div className='alert alert-success'>
