@@ -69,6 +69,18 @@ button a:hover {
   font-weight: 500;
 }
 
+#photo-preview {
+  display: flex;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#photo-preview img {
+  flex-basis: 32%;
+  flex-grow: 1;
+}
+
 /* TODO: Fix positioning of 'Edit' button for shorter descriptions eg Hanh */
 .table button {
   width: 100%;
@@ -97,8 +109,6 @@ tr:focus {
     width: 50%;
   }
 }
-
-
 
 .printed-wishlist {
   flex-grow: 2;

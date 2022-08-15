@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
+import PhotoPreview from '../components/PhotoPreview';
 
 // TODO:  Add feedback after done creating offering. Where to go afterwards?
 //        Can send user to blank form to create another offering,
@@ -35,14 +36,14 @@ export default class CreateOffering extends Component {
     let myWidget = window.cloudinary.createUploadWidget(
       {
         cloudName: 'dkp0gitg9',
-        uploadPreset: 'potluck-photos',
+        uploadPreset: 'potluck-images',
         sources: ['local', 'camera'],
       },
       (error, result) => {
         if (!error && result && result.event === 'success') {
           console.log('Done! Here is the image info: ', result.info);
           this.setState((prevState) => ({
-            imageSrc: result.info.thumbnail_url,
+            imageSrc: result.info.url,
             imageURLs: [...prevState.imageURLs, result.info.url],
           }));
         }
@@ -212,10 +213,16 @@ export default class CreateOffering extends Component {
               value={this.state.description}
               onChange={this.onChangeDescription}></textarea>
           </div>
-          <button id='upload_widget' className='btn btn-primary'>
+          <button id='upload_widget' className='btn btn-warning'>
             Upload photo
           </button>
-          <img alt='' src={this.state.imageSrc} />
+          {/* <img alt='' src={this.state.imageSrc} /> */}
+          {this.state.imageURLs.length ? (
+            <PhotoPreview imageURLs={this.state.imageURLs} />
+          ) : (
+            ''
+          )}
+
           <hr />
           <div className='form-group'>
             <input
