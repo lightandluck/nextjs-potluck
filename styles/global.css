@@ -62,7 +62,9 @@ nav {
 button a,
 button a:hover {
   color: #fff;
+  display: inline-block;      
   text-decoration: none;
+  width: 100%;
 }
 
 .btn {

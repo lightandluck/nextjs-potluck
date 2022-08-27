@@ -182,6 +182,7 @@ export class EditOffering extends Component {
           )}
 
           <hr />
+
           <div className='form-group d-flex justify-content-between'>
             <input
               type='submit'
@@ -195,8 +196,6 @@ export class EditOffering extends Component {
               onClick={this.onCancel}
             />
           </div>
-
-          <div className='form-group'></div>
         </form>
       </div>
     );
