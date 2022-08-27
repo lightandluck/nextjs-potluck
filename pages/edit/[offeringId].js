@@ -60,7 +60,7 @@ export class EditOffering extends Component {
 
   async componentDidMount() {
     // HACK TO GET CLOUDINARY WORKING.
-    setTimeout(this.setupWidget, 2000);
+    setTimeout(this.setupWidget, 1000);
 
     const { offeringId } = this.props.router.query;
 

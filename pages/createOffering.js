@@ -16,6 +16,7 @@ export default class CreateOffering extends Component {
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.setupWidget = this.setupWidget.bind(this);
 
     this.state = {
       playerName: '',
@@ -33,7 +34,7 @@ export default class CreateOffering extends Component {
     this.playerInput = React.createRef();
   }
 
-  componentDidMount() {
+  setupWidget() {
     let myWidget = window.cloudinary.createUploadWidget(
       {
         cloudName: 'dkp0gitg9',
@@ -58,8 +59,13 @@ export default class CreateOffering extends Component {
       },
       false
     );
+  }
 
-    axios
+  async componentDidMount() {
+    setTimeout(() => {
+      this.setupWidget();
+    }, 1000);
+    await axios
       .get('/api/players')
       .then((response) => {
         if (response.data.length > 0) {
