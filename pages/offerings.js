@@ -207,16 +207,24 @@ function Offering({ offering, deleteOffering }) {
 function PotluckItem({ offering, addToWishlist }) {
   return (
     <tr>
+      {console.log(offering)}
       <td>{offering.playerName}</td>
       <td>{offering.title}</td>
       <td>{offering.description}</td>
       <td>
-        <button
-          type='button'
-          className='btn btn-primary btn-sm'
-          onClick={() => addToWishlist(offering)}>
-          + wishlist
-        </button>
+        <div className='form-group'>
+          <button type='button' className='btn btn-warning btn-sm'>
+            <Link href={'/view/' + offering._id}>View</Link>
+          </button>
+        </div>
+        <div className='form-group'>
+          <button
+            type='button'
+            className='btn btn-primary btn-sm'
+            onClick={() => addToWishlist(offering)}>
+            + wishlist
+          </button>
+        </div>
       </td>
     </tr>
   );
