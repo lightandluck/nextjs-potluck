@@ -5,6 +5,12 @@ import { withRouter } from 'next/router';
 import axios from 'axios';
 import PhotoPreview from '../../components/PhotoPreview';
 
+export function getServerSideProps(context) {
+  return {
+    props: { params: context.params },
+  };
+}
+
 export class EditOffering extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +19,7 @@ export class EditOffering extends Component {
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onCancel = this.onCancel.bind(this);
+    this.setupWidget = this.setupWidget.bind(this);
 
     this.state = {
       playerName: '',
@@ -24,7 +31,7 @@ export class EditOffering extends Component {
     };
   }
 
-  async componentDidMount() {
+  setupWidget() {
     let myWidget = window.cloudinary.createUploadWidget(
       {
         cloudName: 'dkp0gitg9',
@@ -49,10 +56,15 @@ export class EditOffering extends Component {
       },
       false
     );
+  }
+
+  async componentDidMount() {
+    // HACK TO GET CLOUDINARY WORKING.
+    setTimeout(this.setupWidget, 2000);
 
     const { offeringId } = this.props.router.query;
 
-    axios
+    await axios
       .get('/api/offerings/' + offeringId)
       .then((response) => {
         this.setState({
@@ -136,6 +148,7 @@ export class EditOffering extends Component {
         <Script
           src='https://upload-widget.cloudinary.com/global/all.js'
           strategy='beforeInteractive'></Script>
+
         <h3>Edit Offering</h3>
         <form onSubmit={this.onSubmit}>
           <div className='form-group'>
