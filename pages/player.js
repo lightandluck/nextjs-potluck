@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Component, Fragment } from 'react';
 import axios from 'axios';
 
-export default class CreateUser extends Component {
+export default class CreatePlayer extends Component {
   constructor(props) {
     super(props);
 
