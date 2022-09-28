@@ -62,9 +62,7 @@ export default class CreateOffering extends Component {
   }
 
   async componentDidMount() {
-    setTimeout(() => {
-      this.setupWidget();
-    }, 1000);
+    this.setupWidget();
     await axios
       .get('/api/players')
       .then((response) => {
@@ -166,9 +164,7 @@ export default class CreateOffering extends Component {
   render() {
     return (
       <div>
-        <Script
-          src='https://upload-widget.cloudinary.com/global/all.js'
-          strategy='beforeInteractive'></Script>
+        
         <h3>Create New Offering</h3>
         {this.state.showSuccessAlert ? (
           <div className='alert alert-success'>

@@ -164,3 +164,13 @@ tr:focus {
 .potluck-item:hover {
   background-color: hsla(118.1, 93.2%, 40.6%, 0.37) !important;
 }
+
+.results {
+  white-space: pre;
+  font-family: monospace, Courier, Monaco;
+  height: 900px;
+  max-height: 60vh;
+  width: 100%;
+  overflow-y: scroll;
+  background-color: lightblue;
+}

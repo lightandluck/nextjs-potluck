@@ -59,8 +59,7 @@ export class EditOffering extends Component {
   }
 
   async componentDidMount() {
-    // HACK TO GET CLOUDINARY WORKING.
-    setTimeout(this.setupWidget, 1000);
+    this.setupWidget();
 
     const { offeringId } = this.props.router.query;
 
@@ -145,10 +144,6 @@ export class EditOffering extends Component {
   render() {
     return (
       <div>
-        <Script
-          src='https://upload-widget.cloudinary.com/global/all.js'
-          strategy='beforeInteractive'></Script>
-
         <h3>Edit Offering</h3>
         <form onSubmit={this.onSubmit}>
           <div className='form-group'>

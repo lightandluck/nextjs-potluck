@@ -74,6 +74,17 @@ const NavBar = () => {
                 </a>
               </Link>
             </li>
+
+            <li className='navbar-item'>
+              <Link href='/results'>
+                <a
+                  className='nav-link'
+                  data-toggle='collapse'
+                  data-target='#navbarSupportedContent'>
+                  6. Results
+                </a>
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>
