@@ -1,3 +1,7 @@
+// TODO: Figure out how to get relative paths working
+// Relative paths work locally, but not in production.
+// Using absolute paths as a hack, but this will fail in future.
+
 importScripts('https://nextjs-potluck.herokuapp.com/scripts/tradeMax.js');
 importScripts('https://nextjs-potluck.herokuapp.com/scripts/tradeMax-util.js');
 
