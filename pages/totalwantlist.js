@@ -41,6 +41,7 @@ export default class TotalWantlist extends Component {
     });
   }
 
+  // TODO: Add loading animation while wantlist is being generated
   render() {
     return (
       <div>
