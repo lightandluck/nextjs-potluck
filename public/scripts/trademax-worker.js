@@ -1,5 +1,5 @@
-importScripts('/scripts/trademax.js');
-importScripts('/scripts/trademax-util.js');
+importScripts('./trademax.js');
+importScripts('./trademax-util.js');
 
 //var tm = new TradeMaximizer();
 var xhttp;
