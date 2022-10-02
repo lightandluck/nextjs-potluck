@@ -1,5 +1,5 @@
-importScripts('https://nextjs-potluck.herokuapp.com/scripts/trademax.js');
-importScripts('https://nextjs-potluck.herokuapp.com/scripts/trademax-util.js');
+importScripts('https://nextjs-potluck.herokuapp.com/scripts/tradeMax.js');
+importScripts('https://nextjs-potluck.herokuapp.com/scripts/tradeMax-util.js');
 
 //var tm = new TradeMaximizer();
 var xhttp;
