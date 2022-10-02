@@ -5,10 +5,29 @@ export default class TotalWantlist extends Component {
   constructor(props) {
     super(props);
 
+    this.writeWantlist = this.writeWantlist.bind(this);
+
     this.state = {
       officialNamesList: '',
       wantlist: '',
     };
+  }
+
+  async writeWantlist() {
+    let text = document.getElementById('wantlist').textContent;
+    var config = {
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+    };
+    await axios
+      .post('/api/wantlist', text, config)
+      .then((res) => {
+        console.log(res.data);
+
+        alert(res.data);
+      })
+      .catch((error) => console.log(error.response));
   }
 
   async componentDidMount() {
@@ -45,22 +64,30 @@ export default class TotalWantlist extends Component {
   render() {
     return (
       <div>
-        <p style={{ whiteSpace: 'pre-wrap' }}>
-          #! ALLOW-DUMMIES <br />
-          #! REQUIRE-COLONS <br />
-          #! REQUIRE-USERNAMES <br />
-          #! HIDE-NONTRADES <br />
-          #! SHOW-ELAPSED-TIME <br />
-          #! ITERATIONS=50 <br />
-          #! SEED=2022 <br />
-          #! METRIC=USERS-TRADING <br />
-          #! SHRINK=2 <br />
-          #! SHRINK-VERBOSE <br />
-          #! SHOW-MISSING <br />
-          !BEGIN-OFFICIAL-NAMES <br />
-          {this.state.officialNamesList} <br />
-          !END-OFFICIAL-NAMES <br />
-          {this.state.wantlist}
+        <input
+          type='button'
+          defaultValue='Upload wantlist to server'
+          onClick={this.writeWantlist}
+          id='btn-write-wantlist'
+          readOnly
+        />
+
+        <p style={{ whiteSpace: 'pre-wrap' }} id='wantlist'>
+          #! ALLOW-DUMMIES {'\n'}
+          #! REQUIRE-COLONS {'\n'}
+          #! REQUIRE-USERNAMES {'\n'}
+          #! HIDE-NONTRADES {'\n'}
+          #! SHOW-ELAPSED-TIME {'\n'}
+          #! ITERATIONS=50 {'\n'}
+          #! SEED=2022 {'\n'}
+          #! METRIC=USERS-TRADING {'\n'}
+          #! SHRINK=2 {'\n'}
+          #! SHRINK-VERBOSE {'\n'}
+          #! SHOW-MISSING {'\n'}
+          !BEGIN-OFFICIAL-NAMES {'\n'}
+          {this.state.officialNamesList} {'\n'}
+          !END-OFFICIAL-NAMES {'\n'}
+          {this.state.wantlist} {'\n'}
         </p>
       </div>
     );
