@@ -1,7 +1,7 @@
 var outframe;
 var progressframe;
-var uploadnow;
-var fileupload;
+// var uploadnow;
+// var fileupload;
 var output;
 var worker = null;
 
@@ -32,8 +32,8 @@ function processmessage(e) {
       break;
 
     case DONE:
-      fileupload.value = output;
-      uploadnow.disabled = false;
+      // fileupload.value = output;
+      // uploadnow.disabled = false;
       break;
   }
 }
@@ -42,17 +42,17 @@ function doit() {
   let url = document.getElementById('url').value;
   outframe = document.getElementById('output');
   progressframe = document.getElementById('progress');
-  uploadnow = document.getElementById('uploadnow');
-  fileupload = document.getElementById('fileupload');
+  // uploadnow = document.getElementById('uploadnow');
+  // fileupload = document.getElementById('fileupload');
   runnow = document.getElementById('runnow');
   outframe.innerHTML = url + '<br>';
   output = '';
   runnow.disabled = true;
-  uploadnow.disabled = true;
+  // uploadnow.disabled = true;
 
   if (worker != null) worker.terminate();
-
-  worker = new Worker('trademax-worker.js');
+  console.log(url);
+  worker = new Worker('/scripts/trademax-worker.js');
   worker.onmessage = processmessage;
   worker.postMessage([RUN, url]);
 }

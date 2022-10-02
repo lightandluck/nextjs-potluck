@@ -174,8 +174,9 @@ class Heap {
 } // class Heap
 
 class Vertex {
-  constructor(name, user, isDummy, type) {
+  constructor(name, longName, user, isDummy, type) {
     this.name = name;
+    this.longName = longName;
     this.user = user;
     this.isDummy = isDummy;
     this.type = type;
@@ -245,13 +246,13 @@ class Graph {
     return this.nameMap[name];
   }
 
-  addVertex(name, user, isDummy) {
-    let receiver = new Vertex(name, user, isDummy, RECEIVER);
+  addVertex(name, longName, user, isDummy) {
+    let receiver = new Vertex(name, longName, user, isDummy, RECEIVER);
 
     this.receiverList.push(receiver);
     this.nameMap[name] = receiver;
 
-    let sender = new Vertex(name, user, isDummy, SENDER);
+    let sender = new Vertex(name, longName, user, isDummy, SENDER);
     this.senderList.push(sender);
     receiver.twin = sender;
     sender.twin = receiver;
@@ -813,6 +814,7 @@ class TradeMaximizer {
     this.shrinkLevel = 0;
     this.shrinkVerbose = false;
     this.officialNames = null;
+    this.longNames = {};
     this.usedNames = new Array();
     this.graph = null;
     this.errors = new Array();
@@ -907,7 +909,7 @@ class TradeMaximizer {
     }
     this.outputln('Input Checksum: ' + hash.hex());
 
-    this.buildGraph(wantLists);
+    this.buildGraph(wantLists, this.longNames);
 
     if (this.showErrors && this.errors.length > 0) {
       this.outputln('ERRORS:');
@@ -1024,6 +1026,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
     let bigStepFlag = false,
       smallStepFlag = false;
     let readingOfficialNames = false;
+    let readingLongNames = false;
     let wantLists = new Array();
 
     for (let lineNumber = 1; ; lineNumber++) {
@@ -1193,8 +1196,9 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
         if (line.charAt(0) == '%')
           fatalError('Cannot give official names for dummy items', lineNumber);
 
-        let toks = line.split(/\s+/);
+        let toks = line.split(/ ===> /);
         let name = toks[0];
+        let longName = toks[1];
         if (!this.caseSensitive) name = name.toUpperCase();
         if (this.officialNames[name])
           this.fatalError(
@@ -1202,6 +1206,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
             lineNumber
           );
         this.officialNames[name] = true;
+        this.longNames[name] = longName;
         continue;
       }
 
@@ -1239,7 +1244,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
     }
   }
 
-  buildGraph(wantLists) {
+  buildGraph(wantLists, longNames) {
     let unknowns = [];
 
     for (let i = 0; i < wantLists.length; i++) {
@@ -1255,6 +1260,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
         name = list[0];
       }
 
+      let longName = longNames[name];
       // todo ....
 
       let isDummy = name.charAt(0) == '%';
@@ -1291,7 +1297,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
       } else {
         this.ITEMS++;
         if (isDummy) this.DUMMY_ITEMS++;
-        let vertex = this.graph.addVertex(name, user, isDummy);
+        let vertex = this.graph.addVertex(name, longName, user, isDummy);
         if (this.officialNames != null && this.officialNames[name])
           this.usedNames.push(name);
 
@@ -1475,7 +1481,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
     if (vertex.user == null || vertex.isDummy) return vertex.name;
     //    else if( sortByItem )
     //      return vertex.name + " " + vertex.user;
-    else return vertex.user + ' ' + vertex.name;
+    else return vertex.user + ' ' + vertex.longName;
   }
 
   displayMatches(cycles) {
@@ -1490,6 +1496,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
 
     let alltrades = new Array();
 
+    // TODO: Fix output around here
     for (let cycle of cycles) {
       let size = cycle.length;
       numTrades += size;
