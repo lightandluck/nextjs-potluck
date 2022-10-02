@@ -34,7 +34,7 @@ export default class TotalWantlist extends Component {
     await axios.get('/api/offerings').then((response) => {
       let officialNamesList = '';
       for (let item of response.data) {
-        officialNamesList += `${item.officialName} ===> ${item.title} (from ${item.playerName}) \n`;
+        officialNamesList += `${item.officialName} ===> ${item.title} \n`;
       }
 
       this.setState({
