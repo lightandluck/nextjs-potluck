@@ -1,7 +1,5 @@
 var outframe;
 var progressframe;
-// var uploadnow;
-// var fileupload;
 var output;
 var worker = null;
 
@@ -32,8 +30,6 @@ function processmessage(e) {
       break;
 
     case DONE:
-      // fileupload.value = output;
-      // uploadnow.disabled = false;
       break;
   }
 }
@@ -42,8 +38,6 @@ function doit() {
   let url = document.getElementById('url').value;
   outframe = document.getElementById('output');
   progressframe = document.getElementById('progress');
-  // uploadnow = document.getElementById('uploadnow');
-  // fileupload = document.getElementById('fileupload');
   runnow = document.getElementById('runnow');
   outframe.innerHTML = url + '<br>';
   output = '';
@@ -75,8 +69,4 @@ function setup() {
 
   if (listid) listidobj.value = listid;
   if (url) urlobj.value = url;
-}
-
-function hello() {
-  console.log('hello');
 }
