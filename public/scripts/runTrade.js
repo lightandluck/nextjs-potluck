@@ -47,8 +47,6 @@ function doit() {
   runnow = document.getElementById('runnow');
   outframe.innerHTML = url + '<br>';
   output = '';
-  runnow.disabled = true;
-  // uploadnow.disabled = true;
 
   if (worker != null) worker.terminate();
   console.log(url);

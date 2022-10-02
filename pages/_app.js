@@ -29,6 +29,7 @@ export default function MyApp({ Component, pageProps }) {
         <script
           src='https://upload-widget.cloudinary.com/global/all.js'
           crossOrigin='anonymous'></script>
+        <script src='/scripts/tradeMax-util.js' />
       </Head>
       <Navbar />
       <div className='container'>

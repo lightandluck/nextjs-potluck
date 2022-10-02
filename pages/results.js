@@ -26,7 +26,6 @@ export default class Results extends Component {
         <Head>
           <title>Nextjs Potluck Prototype</title>
           <link rel='icon' href='/favicon.ico' />
-          <script src='/scripts/tradeMax-util.js' />
           <script src='/scripts/runTrade.js' />
         </Head>
         <p>Enter the url of TradeMaximizer input (aka wants) and submit</p>
