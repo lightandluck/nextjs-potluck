@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     case 'POST':
       // writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
       try {
-        const wantlist = req.body.wantlist;
+        const wantlist = req.body;
 
         if (wantlist && wantlist.length > 0) {
           fs.writeFile('./public/scripts/test.txt', wantlist, 'utf8', (err) => {
