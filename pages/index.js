@@ -70,6 +70,15 @@ export default function Home() {
               https://boardgamegeek.com/wiki/page/TradeMaximizer
             </a>
           </li>
+          <li>
+            <a href='https://boardgamegeek.com/user/JeffyJeff'>
+              Jeff Michaud's
+            </a>{' '}
+            Javascript implementation of Trade Maximizer
+            <a href='https://bgg.activityclub.org/olwlg/trademax.html'>
+              https://bgg.activityclub.org/olwlg/trademax.html
+            </a>
+          </li>
         </ul>
       </main>
 
