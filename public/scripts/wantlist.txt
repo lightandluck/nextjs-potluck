@@ -1,0 +1,107 @@
+#! ALLOW-DUMMIES 
+#! REQUIRE-COLONS 
+#! REQUIRE-USERNAMES 
+#! HIDE-NONTRADES 
+#! SHOW-ELAPSED-TIME 
+#! ITERATIONS=50 
+#! SEED=2022 
+#! METRIC=USERS-TRADING 
+#! SHRINK=2 
+#! SHRINK-VERBOSE 
+#! SHOW-MISSING 
+!BEGIN-OFFICIAL-NAMES 
+WAWG-2 ===> Critical Path by R. Buckminster Fuller (from Kev) 
+WAWG-3 ===> Mutual Aid (from Kev) 
+WAWG-5 ===> Lenovo laptop (from Kev) 
+WAWG-6 ===> Thinkpad laptop (from Kev) 
+WAWG-7 ===> Happy Feet DVD (from Adam) 
+WAWG-8 ===> AmongUs vidego game partner (from Adam) 
+WAWG-9 ===> Refurb macbook (from Adam) 
+WAWG-4 ===> Book: Drawing from Life (from Kev) 
+WAWG-1 ===> Book: The revolution will not be funded by INCITE! Woman of Color Against Violence (from Kev) 
+WAWG-13 ===> Systems thinking video (from Wesley) 
+WAWG-10 ===> Imaginative Stories (from Adam) 
+WAWG-14 ===> Origami 1 (from Wesley) 
+WAWG-15 ===> Hello Kitty squishmallow (from Faith) 
+WAWG-16 ===> BTS albums (from Faith) 
+WAWG-17 ===> Mobile storage space (from Faith) 
+WAWG-12 ===> Sarah and the Five Loaves (from Wesley) 
+WAWG-18 ===> 3 quart pot (from Julie L.) 
+WAWG-11 ===> Learning how to learn (from Wesley) 
+WAWG-19 ===> Book: Acute and chronic wounds care book (from Julie L.) 
+WAWG-20 ===> Vintage Faux Coat (from Julie L.) 
+WAWG-21 ===> Baby bumbo booster seat (from Julie L.) 
+WAWG-25 ===> Guitar playing (from Leanne) 
+WAWG-24 ===> Personal library (from Jaye) 
+WAWG-22 ===> Crystal gel nail polish (from Jaye) 
+WAWG-26 ===> Guided Farmer's Market shopping experience (from Leanne) 
+WAWG-28 ===> Racial Equity Consulting (from Derron) 
+WAWG-27 ===> Cat treats and toys (from Leanne) 
+WAWG-29 ===> Event Planning (from Derron) 
+WAWG-23 ===> Kangan water ionizer (from Jaye) 
+WAWG-33 ===> Crock pot (from KC-Dilla) 
+WAWG-30 ===> Modeling (from Derron) 
+WAWG-32 ===> Books (from KC-Dilla) 
+WAWG-34 ===> Used cat toys (from KC-Dilla) 
+WAWG-35 ===> Toaster (from Nicole) 
+WAWG-36 ===> Ice cooler (from Grace) 
+WAWG-37 ===> Pizza stone (from Grace) 
+WAWG-39 ===> Plants (from Nicole) 
+WAWG-38 ===> Set of short kitchen glasses (from Grace) 
+WAWG-31 ===> Crafts stuff (from KC-Dilla) 
+WAWG-40 ===> Pots for plants (from Nicole) 
+WAWG-41 ===> Black jacket (from Beverlyn) 
+WAWG-42 ===> Book: Yoga book (from Beverlyn) 
+WAWG-43 ===> 	Extra cat toys (from Beverlyn) 
+WAWG-44 ===> Gratitude (from Beverlyn) 
+WAWG-45 ===> Item B (from Test B) 
+WAWG-50 ===> Item A (from Test A) 
+WAWG-59 ===> Relinquish: Game of Math and Magic (from Kev) 
+!END-OFFICIAL-NAMES 
+(Kev) WAWG-2 : WAWG-32 WAWG-15 WAWG-8 WAWG-12 WAWG-18 WAWG-24 
+(Kev) WAWG-1 : WAWG-32 WAWG-15 WAWG-8 WAWG-12 WAWG-18 WAWG-24 WAWG-10 WAWG-25 WAWG-29 WAWG-33 WAWG-23 
+(Kev) WAWG-5 : WAWG-32 WAWG-15 WAWG-8 WAWG-12 WAWG-18 WAWG-24 WAWG-10 WAWG-25 WAWG-29 WAWG-33 WAWG-23 WAWG-36 
+(Kev) WAWG-3 : WAWG-32 WAWG-15 WAWG-8 WAWG-12 WAWG-18 WAWG-24 WAWG-10 WAWG-25 WAWG-29 WAWG-33 WAWG-23 WAWG-36 WAWG-39 
+(Kev) WAWG-6 : WAWG-32 WAWG-15 WAWG-8 WAWG-12 WAWG-18 WAWG-24 WAWG-10 WAWG-25 WAWG-29 WAWG-33 WAWG-23 WAWG-36 WAWG-39 
+(Kev) WAWG-4 : WAWG-32 WAWG-15 WAWG-8 WAWG-12 WAWG-18 WAWG-24 WAWG-10 WAWG-25 WAWG-29 WAWG-33 WAWG-23 WAWG-36 WAWG-39 
+(Kev) WAWG-59 : WAWG-32 WAWG-15 WAWG-8 WAWG-12 WAWG-18 WAWG-24 WAWG-10 WAWG-25 WAWG-29 WAWG-33 WAWG-23 WAWG-36 WAWG-39
+(Faith) WAWG-15 : WAWG-31 WAWG-19 WAWG-33 WAWG-21 WAWG-27 WAWG-2 WAWG-11 
+(Faith) WAWG-17 : WAWG-31 WAWG-19 WAWG-33 WAWG-21 WAWG-27 WAWG-2 WAWG-11 
+(Faith) WAWG-16 : WAWG-31 WAWG-19 WAWG-33 WAWG-21 WAWG-27 WAWG-2 WAWG-11
+(Wesley) WAWG-11 :  
+(Wesley) WAWG-12 :  
+(Wesley) WAWG-13 :  
+(Wesley) WAWG-14 :
+(Julie L.) WAWG-18 : WAWG-28 WAWG-11 WAWG-25 WAWG-2 WAWG-34 
+(Julie L.) WAWG-20 : WAWG-28 WAWG-11 WAWG-25 WAWG-2 WAWG-34 
+(Julie L.) WAWG-21 : WAWG-28 WAWG-11 WAWG-25 WAWG-2 WAWG-34 
+(Julie L.) WAWG-19 : WAWG-28 WAWG-11 WAWG-25 WAWG-2 WAWG-34
+(Adam) WAWG-8 : WAWG-33 WAWG-25 WAWG-22 WAWG-28 
+(Adam) WAWG-10 : WAWG-33 WAWG-25 WAWG-22 WAWG-28 
+(Adam) WAWG-9 : WAWG-33 WAWG-25 WAWG-22 WAWG-28 
+(Adam) WAWG-7 : WAWG-33 WAWG-25 WAWG-22 WAWG-28
+(Jaye) WAWG-22 : WAWG-8 WAWG-29 WAWG-20 WAWG-5 WAWG-32 
+(Jaye) WAWG-24 : WAWG-8 WAWG-29 WAWG-20 WAWG-5 WAWG-32 
+(Jaye) WAWG-23 : WAWG-8 WAWG-29 WAWG-20 WAWG-5 WAWG-32
+(Derron) WAWG-30 : WAWG-3 WAWG-10 WAWG-33 WAWG-26 WAWG-43 WAWG-44 WAWG-42 
+(Derron) WAWG-29 : WAWG-3 WAWG-10 WAWG-33 WAWG-26 WAWG-43 WAWG-44 WAWG-42 
+(Derron) WAWG-28 : WAWG-3 WAWG-10 WAWG-33 WAWG-26 WAWG-43 WAWG-44 WAWG-42
+(Leanne) WAWG-25 :  
+(Leanne) WAWG-26 :  
+(Leanne) WAWG-27 :
+(KC-Dilla) WAWG-32 : WAWG-20 WAWG-17 WAWG-7 WAWG-24 
+(KC-Dilla) WAWG-33 : WAWG-20 WAWG-17 WAWG-7 WAWG-24 
+(KC-Dilla) WAWG-34 : WAWG-20 WAWG-17 WAWG-7 WAWG-24 
+(KC-Dilla) WAWG-31 : WAWG-20 WAWG-17 WAWG-7 WAWG-24
+(Beverlyn) WAWG-43 : WAWG-10 WAWG-21 WAWG-20 WAWG-28 WAWG-35 WAWG-36 WAWG-30 
+(Beverlyn) WAWG-41 : WAWG-10 WAWG-21 WAWG-20 WAWG-28 WAWG-35 WAWG-36 WAWG-30 
+(Beverlyn) WAWG-42 : WAWG-10 WAWG-21 WAWG-20 WAWG-28 WAWG-35 WAWG-36 WAWG-30 
+(Beverlyn) WAWG-44 : WAWG-10 WAWG-21 WAWG-20 WAWG-28 WAWG-35 WAWG-36 WAWG-30
+(Nicole) WAWG-40 : WAWG-19 WAWG-22 WAWG-18 WAWG-32 
+(Nicole) WAWG-39 : WAWG-19 WAWG-22 WAWG-18 WAWG-32 WAWG-36 WAWG-15 
+(Nicole) WAWG-35 : WAWG-19 WAWG-22 WAWG-18 WAWG-32 WAWG-36 WAWG-15
+(Grace) WAWG-37 : WAWG-35 WAWG-16 WAWG-4 WAWG-5 WAWG-12 WAWG-25 WAWG-32 WAWG-24 WAWG-34 
+(Grace) WAWG-38 : WAWG-35 WAWG-16 WAWG-4 WAWG-5 WAWG-12 WAWG-25 WAWG-32 WAWG-24 WAWG-34 
+(Grace) WAWG-36 : WAWG-35 WAWG-16 WAWG-4 WAWG-5 WAWG-12 WAWG-25 WAWG-32 WAWG-24 WAWG-34
+(Test A) WAWG-50 : WAWG-45
+(Test B) WAWG-45 : WAWG-2 WAWG-3 
