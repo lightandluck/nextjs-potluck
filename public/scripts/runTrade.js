@@ -43,17 +43,20 @@ function doit() {
   output = '';
 
   if (worker != null) worker.terminate();
-  console.log(url);
+
   worker = new Worker('/scripts/trademax-worker.js');
   worker.onmessage = processmessage;
   worker.postMessage([RUN, url]);
 }
 
 function copytoclipboard(id) {
-  var div = document.getElementById(id);
-  div.select();
-  div.setSelectionRange(0, 999999);
-  document.execCommand('copy');
+  let output = document.getElementById(id);
+  window.navigator.clipboard
+    .writeText(output.textContent)
+    .then(() => alert('Text copied to clipboard'))
+    .catch((err) => {
+      alert('Error in copying text: ', err);
+    });
 }
 
 function geturlparmeter(name) {

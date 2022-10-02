@@ -6,6 +6,7 @@ export default class Results extends Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
+    this.copytoclipboard = this.copytoclipboard.bind(this);
 
     // this.state = {
     //   name: '',
@@ -20,6 +21,11 @@ export default class Results extends Component {
     window.doit();
   }
 
+  copytoclipboard(e) {
+    e.preventDefault();
+    window.copytoclipboard('output');
+  }
+
   render() {
     return (
       <Fragment>
@@ -29,7 +35,7 @@ export default class Results extends Component {
           <script src='/scripts/runTrade.js' />
         </Head>
         <p>Enter the url of TradeMaximizer input (aka wants) and submit</p>
-        <input readOnly id='url' defaultValue='/scripts/testwants.txt' />
+        <input readOnly id='url' defaultValue='/scripts/wantlist.txt' />
         {/* // TODO: How do we call functions from external scripts???? */}
         <input
           readOnly
@@ -53,6 +59,14 @@ export default class Results extends Component {
 
         <br />
         <div className='results' id='output'></div>
+        <br />
+        <input
+          readOnly
+          type='button'
+          defaultValue='Copy Results'
+          onClick={this.copytoclipboard}
+          id='copy-results'
+        />
       </Fragment>
     );
   }
