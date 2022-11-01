@@ -62,20 +62,22 @@ export default class TotalWantlist extends Component {
   }
 
   async componentDidUpdate() {
-    let text = document.getElementById('wantlist').textContent;
-    var config = {
-      headers: {
-        'Content-Type': 'text/plain',
-      },
-    };
-    await axios
-      .post('/api/wantlist', text, config)
-      .then((res) => {
-        this.setState({
-          updating: false,
-        });
-      })
-      .catch((error) => console.log(error.response));
+    if (this.state.updating) {
+      let text = document.getElementById('wantlist').textContent;
+      var config = {
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+      };
+      await axios
+        .post('/api/wantlist', text, config)
+        .then((res) => {
+          this.setState({
+            updating: false,
+          });
+        })
+        .catch((error) => console.log(error.response));
+    }
   }
 
   // TODO: Add loading animation while wantlist is being generated
