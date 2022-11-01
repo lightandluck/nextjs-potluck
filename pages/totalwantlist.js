@@ -62,7 +62,7 @@ export default class TotalWantlist extends Component {
   }
 
   async componentDidUpdate() {
-    if (this.state.updating) {
+    if (this.state.updating && this.state.wantlist) {
       let text = document.getElementById('wantlist').textContent;
       var config = {
         headers: {
