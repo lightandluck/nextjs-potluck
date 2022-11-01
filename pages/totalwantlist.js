@@ -10,6 +10,7 @@ export default class TotalWantlist extends Component {
     this.state = {
       officialNamesList: '',
       wantlist: '',
+      updating: true,
     };
   }
 
@@ -60,17 +61,39 @@ export default class TotalWantlist extends Component {
     });
   }
 
+  async componentDidUpdate() {
+    let text = document.getElementById('wantlist').textContent;
+    var config = {
+      headers: {
+        'Content-Type': 'text/plain',
+      },
+    };
+    await axios
+      .post('/api/wantlist', text, config)
+      .then((res) => {
+        this.setState({
+          updating: false,
+        });
+      })
+      .catch((error) => console.log(error.response));
+  }
+
   // TODO: Add loading animation while wantlist is being generated
   render() {
     return (
       <div>
-        <input
+        {/* <input
           type='button'
           defaultValue='Upload wantlist to server'
           onClick={this.writeWantlist}
           id='btn-write-wantlist'
           readOnly
-        />
+        /> */}
+        {this.state.updating ? (
+          <div className='alert alert-info'>Updating wantlist...</div>
+        ) : (
+          <div className='alert alert-success'>Updating wantlist...DONE!</div>
+        )}
 
         <p style={{ whiteSpace: 'pre-wrap' }} id='wantlist'>
           #! ALLOW-DUMMIES {'\n'}
