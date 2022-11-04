@@ -20,20 +20,19 @@ export default async function handler(req, res) {
     case 'POST':
       try {
         const wantlist = req.body;
-        res.send(__dirname);
-        // if (wantlist && wantlist.length > 0) {
-        //   fs.writeFile(
-        //     './public/scripts/wantlist.txt',
-        //     wantlist,
-        //     'utf8',
-        //     (err) => {
-        //       if (err) throw err;
-        //       res.send('File saved!');
-        //     }
-        //   );
-        // } else {
-        //   throw new Error('Request body did not contain data.');
-        // }
+        if (wantlist && wantlist.length > 0) {
+          fs.writeFile(
+            './public/scripts/wantlist.txt',
+            wantlist,
+            'utf8',
+            (err) => {
+              if (err) throw err;
+              res.send('File saved!');
+            }
+          );
+        } else {
+          throw new Error('Request body did not contain data.');
+        }
       } catch (error) {
         res.status(400).json({ name: error.name, message: error.message });
       }
