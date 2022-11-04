@@ -1,2 +1,2 @@
 [functions]
-  included_files = ["/tmp/wantlist.txt"]
+  included_files = ["tmp/wantlist.txt"]
