@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     case 'GET':
       try {
         await fs.readFile(
-          '/var/task/.next/server/scripts/wantlist.txt',
+          '/var/task/.next/server/public/scripts/wantlist.txt',
           (err, data) => {
             res.status(200).send(data);
           }
