@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        await fs.readFile('/scripts/wantlist.txt', (err, data) => {
+        await fs.readFile('/public/scripts/wantlist.txt', (err, data) => {
           res.status(200).send(data);
         });
       } catch (error) {
@@ -20,10 +20,15 @@ export default async function handler(req, res) {
       try {
         const wantlist = req.body;
         if (wantlist && wantlist.length > 0) {
-          fs.writeFile('/scripts/wantlist.txt', wantlist, 'utf8', (err) => {
-            if (err) throw err;
-            res.send('File saved!');
-          });
+          fs.writeFile(
+            '/public/scripts/wantlist.txt',
+            wantlist,
+            'utf8',
+            (err) => {
+              if (err) throw err;
+              res.send('File saved!');
+            }
+          );
         } else {
           throw new Error('Request body did not contain data.');
         }
