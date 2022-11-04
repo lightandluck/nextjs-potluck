@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        await fs.readFile('../../public/scripts/wantlist.txt', (err, data) => {
+        await fs.readFile('./public/scripts/wantlist.txt', (err, data) => {
           res.status(200).send(data);
         });
       } catch (error) {
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         const wantlist = req.body;
         if (wantlist && wantlist.length > 0) {
           fs.writeFile(
-            '../../public/scripts/wantlist.txt',
+            './public/scripts/wantlist.txt',
             wantlist,
             'utf8',
             (err) => {
