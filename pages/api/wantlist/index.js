@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        await fs.readFile('/public/scripts/wantlist.txt', (err, data) => {
+        await fs.readFile('public/scripts/wantlist.txt', (err, data) => {
           res.status(200).send(data);
         });
       } catch (error) {
