@@ -34,8 +34,7 @@ export default class Results extends Component {
           <link rel='icon' href='/favicon.ico' />
           <script src='/scripts/runTrade.js' />
         </Head>
-        <p>Enter the url of TradeMaximizer input (aka wants) and submit</p>
-        <input readOnly id='url' defaultValue='/scripts/wantlist.txt' />
+        {/* <input readOnly id='url' defaultValue='tmp/wantlist.txt' /> */}
         {/* // TODO: How do we call functions from external scripts???? */}
         <input
           readOnly
