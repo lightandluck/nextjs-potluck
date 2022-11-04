@@ -35,7 +35,7 @@ function processmessage(e) {
 }
 
 function doit() {
-  let url = 'https://nextjs-potluck.netlify.app/api/wantlist';
+  let url = './api/wantlist';
   outframe = document.getElementById('output');
   progressframe = document.getElementById('progress');
   runnow = document.getElementById('runnow');
