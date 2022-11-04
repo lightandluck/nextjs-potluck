@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         const wantlist = req.body;
         if (wantlist && wantlist.length > 0) {
           fs.writeFile(
-            '/public/scripts/wantlist.txt',
+            'public/scripts/wantlist.txt',
             wantlist,
             'utf8',
             (err) => {
