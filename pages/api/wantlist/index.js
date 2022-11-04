@@ -9,9 +9,12 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        await fs.readFile('./scripts/wantlist.txt', (err, data) => {
-          res.status(200).send(data);
-        });
+        await fs.readFile(
+          '/var/task/.next/server/scripts/wantlist.txt',
+          (err, data) => {
+            res.status(200).send(data);
+          }
+        );
       } catch (error) {
         res.status(400).json({ name: error.name, message: error.message });
       }
