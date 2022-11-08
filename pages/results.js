@@ -7,13 +7,6 @@ export default class Results extends Component {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
     this.copytoclipboard = this.copytoclipboard.bind(this);
-
-    // this.state = {
-    //   name: '',
-    //   showSuccessAlert: false,
-    //   showErrorAlert: false,
-    //   errorMessage: '',
-    // };
   }
 
   onSubmit(e) {

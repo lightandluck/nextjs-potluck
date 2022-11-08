@@ -39,14 +39,20 @@ function doit() {
   outframe = document.getElementById('output');
   progressframe = document.getElementById('progress');
   runnow = document.getElementById('runnow');
-  outframe.innerHTML = url + '<br>';
-  output = '';
 
-  if (worker != null) worker.terminate();
+  try {
+    // outframe.innerHTML = url + '<br>';
+    output = '';
 
-  worker = new Worker('/scripts/trademax-worker.js');
-  worker.onmessage = processmessage;
-  worker.postMessage([RUN, url]);
+    if (worker != null) worker.terminate();
+
+    worker = new Worker('/scripts/trademax-worker.js');
+    worker.onmessage = processmessage;
+    worker.postMessage([RUN, url]);
+  } catch (error) {
+    outframe.innerHTML =
+      'There was an error. Please try to go to step 5 first, then return to this page.';
+  }
 }
 
 function copytoclipboard(id) {
