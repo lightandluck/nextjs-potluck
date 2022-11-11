@@ -92,7 +92,9 @@ export default class TotalWantlist extends Component {
           readOnly
         /> */}
         {this.state.updating ? (
-          <div className='alert alert-info'>Updating wantlist...</div>
+          <div className='alert alert-warning' style={{ color: 'black' }}>
+            Updating wantlist...
+          </div>
         ) : (
           <div className='alert alert-success'>Updating wantlist...DONE!</div>
         )}
