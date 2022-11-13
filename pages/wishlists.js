@@ -304,7 +304,7 @@ export default class DraggableExample extends React.Component {
                 <th>Player</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Official Name</th>
+                <th>Photos</th>
               </tr>
             </thead>
             <Droppable droppableId='droppable'>
@@ -403,7 +403,11 @@ export default class DraggableExample extends React.Component {
                             </DraggableCell>
                             <DraggableCell
                               isDragOccurring={snapshot.isDragging}>
-                              {item.offeringId.officialName}
+                              {item.offeringId.imageURLs.length > 0 ? (
+                                <img src={item.offeringId.imageURLs[0]} />
+                              ) : (
+                                <img src='https://res.cloudinary.com/dkp0gitg9/image/upload/v1668128230/potluck-images/image-placeholder-icon-16_w73xsu.png' />
+                              )}
                             </DraggableCell>
                           </DraggableRow>
                         )}

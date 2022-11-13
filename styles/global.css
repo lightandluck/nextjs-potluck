@@ -163,6 +163,12 @@ tr:focus {
   }
 }
 
+.wishlist-table img {
+  width: 10vw;
+  height: 10vw;
+}
+
+
 .offering {
   background-color: hsla(33, 82.5%, 49.4%, 0.37);
 }
