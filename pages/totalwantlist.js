@@ -96,7 +96,12 @@ export default class TotalWantlist extends Component {
             Updating wantlist...
           </div>
         ) : (
-          <div className='alert alert-success'>Updating wantlist...DONE!</div>
+          <div className='alert alert-success'>
+            DONE! Go to{' '}
+            <a style={{ textDecoration: 'underline' }} href='/results'>
+              results.
+            </a>
+          </div>
         )}
 
         <p style={{ whiteSpace: 'pre-wrap' }} id='wantlist'>
