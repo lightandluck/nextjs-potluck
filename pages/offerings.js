@@ -148,31 +148,11 @@ export default class OfferingsList extends Component {
             })}
           </select>
         </div>
-        <h3>Your Offerings</h3>
-        <table className='table'>
-          <tbody>
-            <tr className='table-info'>
-              <th>Player name</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Actions</th>
-            </tr>
-            {this.offeringsList()}
-          </tbody>
-        </table>
-        <h3>Potluck Offerings</h3>
-        <table className='table'>
-          <caption></caption>
-          <tbody>
-            <tr className='table-primary'>
-              <th>Player name</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Actions</th>
-            </tr>
-            {this.potluckList()}
-          </tbody>
-        </table>
+        <h3 className='offerings-header'>Your Offerings</h3>
+        <ul className='gallery'>{this.offeringsList()}</ul>
+
+        <h3 className='potluck-header'>Potluck Offerings</h3>
+        <ul className='gallery'>{this.potluckList()}</ul>
       </div>
     );
   }
@@ -181,11 +161,24 @@ export default class OfferingsList extends Component {
 // TODO: Add confirmation to delete action!
 function Offering({ offering, deleteOffering }) {
   return (
-    <tr>
-      <td>{offering.playerName}</td>
-      <td>{offering.title}</td>
-      <td>{offering.description}</td>
-      <td>
+    <li>
+      {/* {console.log(offering)} */}
+      <div className='info'>
+        <div>
+          <strong>{offering.title}</strong>
+        </div>
+        <div>{offering.description}</div>
+      </div>
+      {offering.imageURLs.length > 0 ? (
+        <img src={offering.imageURLs[0]} />
+      ) : (
+        <img
+          style={{ width: '250px;' }}
+          src='https://res.cloudinary.com/dkp0gitg9/image/upload/v1668128230/potluck-images/image-placeholder-icon-16_w73xsu.png'
+        />
+      )}
+
+      <div className='actions'>
         <button type='button' className='btn btn-info btn-sm'>
           <Link href={'/edit/' + offering._id}>Edit</Link>
         </button>{' '}
@@ -198,34 +191,40 @@ function Offering({ offering, deleteOffering }) {
             Delete
           </a>
         </Link>
-      </td>
-    </tr>
+      </div>
+    </li>
   );
 }
 
 // TODO: Figure out how to show only items not on wishlist ---- further, already viewed maybe
 function PotluckItem({ offering, addToWishlist }) {
   return (
-    <tr>
-      {console.log(offering)}
-      <td>{offering.playerName}</td>
-      <td>{offering.title}</td>
-      <td>{offering.description}</td>
-      <td>
-        <div className='form-group'>
-          <button type='button' className='btn btn-warning btn-sm'>
-            <Link href={'/view/' + offering._id}>View</Link>
-          </button>
+    <li>
+      {/* {console.log(offering)} */}
+      <div className='info'>
+        <div>
+          <strong>{offering.title}</strong>
         </div>
-        <div className='form-group'>
-          <button
-            type='button'
-            className='btn btn-primary btn-sm'
-            onClick={() => addToWishlist(offering)}>
-            + wishlist
-          </button>
-        </div>
-      </td>
-    </tr>
+        <div>{offering.description}</div>
+      </div>
+      {offering.imageURLs.length > 0 ? (
+        <img src={offering.imageURLs[0]} />
+      ) : (
+        <img src='https://res.cloudinary.com/dkp0gitg9/image/upload/v1668128230/potluck-images/image-placeholder-icon-16_w73xsu.png' />
+      )}
+
+      <div className='actions'>
+        <button type='button' className='btn btn-warning btn-sm'>
+          <Link href={'/view/' + offering._id}>View</Link>
+        </button>
+
+        <button
+          type='button'
+          className='btn btn-primary btn-sm'
+          onClick={() => addToWishlist(offering)}>
+          + wishlist
+        </button>
+      </div>
+    </li>
   );
 }
