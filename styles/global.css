@@ -197,7 +197,7 @@ tr:focus {
 
 .gallery > li {
   border: 1px solid #222;
-  flex-basis: 25vw;
+  flex-basis: 24vw;
   height: 30vw;
   list-style: none;
   position: relative;
