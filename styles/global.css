@@ -54,7 +54,7 @@ nav {
   font-size: 1.25rem;
 }
 
-.deleteLink {
+/* .deleteLink {
   display: block;
   margin-top: 2px;
   text-align: center;
@@ -64,18 +64,38 @@ nav {
   font-size: .875rem;
   line-height: 1.5;
   border-radius: .3rem;
-}
+} */
 
-button a,
-button a:hover {
+.edit-btn a,
+.edit-btn a:hover {
   color: #fff;
-  display: inline-block;      
+  display: inline;
+  margin-left: 10px;
   text-decoration: none;
   width: 100%;
 }
 
+.delete-btn a,
+.delete-btn a:hover {
+  color: #ff7851;
+  display: inline;
+  margin-left: 10px;
+  text-decoration: none;
+  width: 100%;
+}
+
+.delete-btn:hover a {
+  color: white;
+}
+
 .btn {
   font-weight: 500;
+}
+
+@media (max-width: 500px) {
+  .btn-text {
+    display: none;
+  }
 }
 
 #photo-preview {

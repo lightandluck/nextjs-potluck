@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import Head from 'next/head';
 
 export default class OfferingsList extends Component {
   constructor(props) {
@@ -130,33 +131,41 @@ export default class OfferingsList extends Component {
 
   render() {
     return (
-      <div>
-        <div className='form-group'>
-          <label>Player name: </label>
-          <select
-            ref={this.currentPlayer}
-            required
-            className='form-control'
-            value={this.state.playerName}
-            onChange={this.onChangePlayerName}>
-            {this.state.players.map(function (player) {
-              return (
-                <option
-                  key={player._id}
-                  value={player.name}
-                  data-playerid={player._id}>
-                  {player.name}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        <h3 className='offerings-header'>Your Offerings</h3>
-        <ul className='gallery'>{this.offeringsList()}</ul>
+      <Fragment>
+        <Head>
+          <link
+            rel='stylesheet'
+            href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css'
+          />
+        </Head>
+        <div>
+          <div className='form-group'>
+            <label>Player name: </label>
+            <select
+              ref={this.currentPlayer}
+              required
+              className='form-control'
+              value={this.state.playerName}
+              onChange={this.onChangePlayerName}>
+              {this.state.players.map(function (player) {
+                return (
+                  <option
+                    key={player._id}
+                    value={player.name}
+                    data-playerid={player._id}>
+                    {player.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <h3 className='offerings-header'>Your Offerings</h3>
+          <ul className='gallery'>{this.offeringsList()}</ul>
 
-        <h3 className='potluck-header'>Potluck Offerings</h3>
-        <ul className='gallery'>{this.potluckList()}</ul>
-      </div>
+          <h3 className='potluck-header'>Potluck Offerings</h3>
+          <ul className='gallery'>{this.potluckList()}</ul>
+        </div>
+      </Fragment>
     );
   }
 }
@@ -176,24 +185,32 @@ function Offering({ offering, deleteOffering }) {
         <img src={offering.imageURLs[0]} />
       ) : (
         <img
-          style={{ width: '250px;' }}
+          style={{ width: '250px' }}
           src='https://res.cloudinary.com/dkp0gitg9/image/upload/v1668128230/potluck-images/image-placeholder-icon-16_w73xsu.png'
         />
       )}
 
       <div className='actions'>
-        <button type='button' className='btn btn-info btn-sm'>
-          <Link href={'/edit/' + offering._id}>Edit</Link>
+        <button type='button' className='edit-btn btn btn-info'>
+          <span className='bi-pencil-square'>
+            <Link href={'/edit/' + offering._id}>
+              <span className='btn-text'>Edit</span>
+            </Link>
+          </span>
         </button>{' '}
-        <Link href='' passHref>
-          <a
-            className='deleteLink'
-            onClick={() => {
-              deleteOffering(offering._id);
-            }}>
-            Delete
-          </a>
-        </Link>
+        <button type='button' class='delete-btn btn btn-outline-danger'>
+          <span className='bi-trash'>
+            <Link href='' passHref>
+              <a
+                className='deleteLink'
+                onClick={() => {
+                  deleteOffering(offering._id);
+                }}>
+                <span className='btn-text'>Delete</span>
+              </a>
+            </Link>
+          </span>
+        </button>
       </div>
     </li>
   );
