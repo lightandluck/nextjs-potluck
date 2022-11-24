@@ -50,18 +50,21 @@ export default class OfferingsList extends Component {
   }
 
   async deleteOffering(id) {
-    await axios.delete('/api/offerings/' + id).then((response) => {
-      console.log(response.data);
-    });
-
-    await axios
-      .get('/api/offerings')
-      .then((response) => {
-        this.setState({ offerings: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
+    let result = await confirm('Are you sure you want to delete?');
+    if (result) {
+      await axios.delete('/api/offerings/' + id).then((response) => {
+        console.log(response.data);
       });
+
+      await axios
+        .get('/api/offerings')
+        .then((response) => {
+          this.setState({ offerings: response.data });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   addToWishlist(offering) {
