@@ -54,50 +54,6 @@ nav {
   font-size: 1.25rem;
 }
 
-/* .deleteLink {
-  display: block;
-  margin-top: 2px;
-  text-align: center;
-  border: 1px solid #78c2ad;
-  width: 10vw;
-  padding: .25rem .5rem;
-  font-size: .875rem;
-  line-height: 1.5;
-  border-radius: .3rem;
-} */
-
-.edit-btn a,
-.edit-btn a:hover {
-  color: #fff;
-  display: inline;
-  margin-left: 10px;
-  text-decoration: none;
-  width: 100%;
-}
-
-.delete-btn a,
-.delete-btn a:hover {
-  color: #ff7851;
-  display: inline;
-  margin-left: 10px;
-  text-decoration: none;
-  width: 100%;
-}
-
-.delete-btn:hover a {
-  color: white;
-}
-
-.btn {
-  font-weight: 500;
-}
-
-@media (max-width: 500px) {
-  .btn-text {
-    display: none;
-  }
-}
-
 #photo-preview {
   display: flex;
   margin: 1rem 0;
@@ -233,11 +189,6 @@ tr:focus {
   vertical-align: middle;
 }
 
-.gallery > li:last-child::after {
-  content: "";
-  flex-basis: 25vw;
-}
-
 .info {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.9);
@@ -253,6 +204,7 @@ tr:focus {
   position: absolute;
   bottom: 0;
   border-top: 1px solid black;
+  column-gap: 1vw;
   background-color: rgba(255, 255, 255, 0.9);
   justify-content: space-evenly;
   padding: 10px;
@@ -261,6 +213,24 @@ tr:focus {
 
 .actions button {
   width: 10vw;
+}
+
+.btn {
+  font-weight: 500;
+}
+
+.btn-warning {
+  color: rgb(33,33,33);
+}
+
+.btn-text {
+  margin-left: .5rem;
+}
+
+@media (max-width: 700px) {
+  .btn-text {
+    display: none;
+  }
 }
 
 .results {

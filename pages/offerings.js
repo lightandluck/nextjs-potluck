@@ -192,23 +192,19 @@ function Offering({ offering, deleteOffering }) {
 
       <div className='actions'>
         <button type='button' className='edit-btn btn btn-info'>
-          <span className='bi-pencil-square'>
-            <Link href={'/edit/' + offering._id}>
+          <Link href={'/edit/' + offering._id}>
+            <span className='bi-pencil-square'>
               <span className='btn-text'>Edit</span>
-            </Link>
-          </span>
+            </span>
+          </Link>
         </button>{' '}
-        <button type='button' class='delete-btn btn btn-outline-danger'>
-          <span className='bi-trash'>
-            <Link href='' passHref>
-              <a
-                className='deleteLink'
-                onClick={() => {
-                  deleteOffering(offering._id);
-                }}>
-                <span className='btn-text'>Delete</span>
-              </a>
-            </Link>
+        <button type='button' class='delete-btn btn btn-dark'>
+          <span
+            className='bi-trash'
+            onClick={() => {
+              deleteOffering(offering._id);
+            }}>
+            <span className='btn-text'>Delete</span>
           </span>
         </button>
       </div>
@@ -234,15 +230,22 @@ function PotluckItem({ offering, addToWishlist }) {
       )}
 
       <div className='actions'>
-        <button type='button' className='btn btn-warning btn-sm'>
-          <Link href={'/view/' + offering._id}>View</Link>
+        <button type='button' className='btn btn-primary'>
+          <span
+            className='bi-journal-plus'
+            onClick={() => {
+              addToWishlist(offering);
+            }}>
+            <span className='btn-text'>Wishlist</span>
+          </span>
         </button>
 
-        <button
-          type='button'
-          className='btn btn-primary btn-sm'
-          onClick={() => addToWishlist(offering)}>
-          + wishlist
+        <button type='button' className='btn btn-warning'>
+          <Link href={'/view/' + offering._id}>
+            <span className='bi-eye'>
+              <span className='btn-text'>View</span>
+            </span>
+          </Link>
         </button>
       </div>
     </li>
