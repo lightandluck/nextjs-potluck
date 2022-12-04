@@ -173,7 +173,7 @@ tr:focus {
 
 .gallery > li {
   border: 1px solid #222;
-  flex-basis: 24vw;
+  flex-basis: 33vw;
   height: 30vw;
   list-style: none;
   position: relative;
@@ -230,6 +230,12 @@ tr:focus {
 @media (max-width: 700px) {
   .btn-text {
     display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .gallery>li {
+    flex-basis: 24vw;
   }
 }
 
