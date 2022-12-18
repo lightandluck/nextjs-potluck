@@ -2,8 +2,8 @@
 // Relative paths work locally, but not in production.
 // Using absolute paths as a hack, but this will fail in future.
 
-importScripts('https://nextjs-potluck.herokuapp.com/scripts/tradeMax.js');
-importScripts('https://nextjs-potluck.herokuapp.com/scripts/tradeMax-util.js');
+importScripts('tradeMax.js');
+importScripts('tradeMax-util.js');
 
 //var tm = new TradeMaximizer();
 var xhttp;
