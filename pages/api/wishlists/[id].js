@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         .populate('offerings.offeringId', '-updatedAt -createdAt -__v')
         .populate('playerId', 'name')
         .then((wishlist) => res.json(wishlist))
-        .catch((err) =>
+        .catch((error) =>
           res.status(400).json({ type: error.name, message: error.message })
         );
       break;
