@@ -68,7 +68,20 @@ export default class OfferingsList extends Component {
     }
   }
 
-  addToWishlist(offering) {
+  addToWishlist(offering, e) {
+    console.log(e);
+
+    e.preventDefault();
+
+    // The event handler is on the button. This logic tries
+    // to find the correct element to change the span text within the button
+    // to provide feedback. We have this logic because event
+    // propagation means that the triggering element is inconsistent.
+    let elem = e.target.closest('.bi-journal-plus');
+    if (elem === null) {
+      elem = e.target.querySelector('.bi-journal-plus');
+    }
+
     const wishedItem = {
       playerId: this.state.playerId,
       offeringId: offering._id,
@@ -78,6 +91,9 @@ export default class OfferingsList extends Component {
     axios
       .post('/api/wishlists', wishedItem)
       .then((res) => {
+        elem.classList.add('bi-check-square');
+        elem.classList.remove('bi-journal-plus');
+        elem.innerHTML = '<span class="btn-text">Added!</span>';
         console.log(res.data);
       })
       .catch((err) => {
@@ -198,7 +214,7 @@ function Offering({ offering, deleteOffering }) {
             </span>
           </Link>
         </button>{' '}
-        <button type='button' class='delete-btn btn btn-dark'>
+        <button type='button' className='delete-btn btn btn-dark'>
           <span
             className='bi-trash'
             onClick={() => {
@@ -230,12 +246,13 @@ function PotluckItem({ offering, addToWishlist }) {
       )}
 
       <div className='actions'>
-        <button type='button' className='btn btn-primary'>
-          <span
-            className='bi-journal-plus'
-            onClick={() => {
-              addToWishlist(offering);
-            }}>
+        <button
+          type='button'
+          className='btn btn-primary'
+          onClick={(e) => {
+            addToWishlist(offering, e);
+          }}>
+          <span className='bi-journal-plus'>
             <span className='btn-text'>Wishlist</span>
           </span>
         </button>
