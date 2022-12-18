@@ -41,7 +41,7 @@ function doit() {
   runnow = document.getElementById('runnow');
 
   try {
-    // outframe.innerHTML = url + '<br>';
+    outframe.innerHTML = 'Running... \n\n';
     output = '';
 
     if (worker != null) worker.terminate();
