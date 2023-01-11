@@ -169,17 +169,20 @@ tr:focus {
   gap: 20px;
   justify-content: space-evenly;
   padding: 0;
+  flex-direction: column;
 }
 
 .gallery > li {
   border: 1px solid #222;
   flex-basis: 33vw;
-  height: 30vw;
+  
   list-style: none;
   position: relative;
   overflow: hidden;
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  height: 400px;
+  overflow: visible;
 }
 
 .gallery li img {
@@ -194,7 +197,6 @@ tr:focus {
   background-color: rgba(255, 255, 255, 0.9);
   border-bottom: 1px solid black;
   padding: 10px;
-  height: 5vw;
   overflow: hidden;
   width: 100%;
 }
@@ -234,8 +236,14 @@ tr:focus {
 }
 
 @media (min-width: 900px) {
+  .gallery {
+    flex-direction: row;
+  }
+
   .gallery>li {
     flex-basis: 24vw;
+    height: 30vw;
+    overflow: hidden;
   }
 }
 
