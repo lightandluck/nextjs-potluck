@@ -1,6 +1,6 @@
 # Potluck Prototype
 
-This is an MVP for creating wantlists for TradeMaximizer. The hope is that it can facilitate a math trade for things other than boardgames, which was the intention of the original TradeMaximizer. This only creates the wantlist text file that is inputted into the TradeMaximizer .jar file. The hope is that java file can be turned into a service or ported to javascript in the future so that everything can be done in this app.
+This is an MVP (minimum viable product) for running Math Trades. The hope is that it can facilitate a math trade for things other than boardgames, which was the intention of the original TradeMaximizer.
 
 Demo: https://nextjs-potluck.netlify.app/
 
