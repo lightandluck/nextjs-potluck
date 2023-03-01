@@ -32,4 +32,7 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 .env
+config.yml
+export.sh
+import.sh
 
