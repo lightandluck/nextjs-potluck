@@ -36,4 +36,5 @@ export-config.yml
 import-config.yml
 export.sh
 import.sh
+local-scripts/*.json
 
