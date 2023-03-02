@@ -6,13 +6,20 @@ Demo: https://nextjs-potluck.netlify.app/
 
 ## How to install
 
-### Set up a MongoDB database
+### 1. Set up a MongoDB database
 
-Set up a MongoDB database either locally or with [MongoDB Atlas for free](https://mongodb.com/atlas).
+Either locally or with [MongoDB Atlas for free](https://mongodb.com/atlas).
 
-- To start mongodb, start from command line: `mongod --auth`
+- [How to install mongodb locally](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/)
+  - To start mongodb, start from command line: `brew services start mongodb-community@6.0`
+  - To stop: `brew services stop mongodb-community@6.0`
+  - Connect with cli: `mongosh --port 27017  --authenticationDatabase "admin" -u "myUserAdmin" -p`
+  - Enable access control with SCRAM: [Authenticate with SCRAM](https://www.mongodb.com/docs/manual/tutorial/configure-scram-client-authentication/)
+  - Export and import data using scripts in `/local-scripts`
+- Reference articles
+  - [Connection string parameters](https://www.mongodb.com/docs/manual/reference/connection-string/#mongodb-urioption-urioption.authSource)
 
-### Set up environment variables
+### 2. Set up environment variables
 
 Copy the `env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
 
@@ -20,17 +27,19 @@ Copy the `env.local.example` file in this directory to `.env.local` (which will 
 cp .env.local.example .env.local
 ```
 
-Set each variable on `.env.local`:
+Set these variables in `.env.local`:
 
-- `ATLAS_URI` - Cloud connection string
-- `LOCAL_URI` - Local DB connection string
-- `LOCAL_MONGODB_DB` - Local DB Name
-- `ATLAS_MONGODB_DB` - Cloud DB Name
 - `LOCAL_MONGOOSE_URI` - URI with local db in connection string
 - `ATLAS_MONGOOSE_URI` - URI with cloud db in connection string
 - `SEED_PREFIX` - Starting seed prefix. TODO: Have the app set automatically from this config, instead of manually by the developer
 
-### Run Next.js in development mode
+- These were for the native nodejs mongodb driver, but are no longer used. Keeping around just in case.
+  - `ATLAS_URI` - Cloud connection string
+  - `LOCAL_URI` - Local DB connection string
+  - `LOCAL_MONGODB_DB` - Local DB Name
+  - `ATLAS_MONGODB_DB` - Cloud DB Name
+
+### 3. Run Next.js in development mode
 
 ```bash
 npm install
@@ -44,7 +53,7 @@ yarn dev
 
 Your app should be up and running on [http://localhost:3001](http://localhost:3001)!
 
-### Set up seed. IMPORTANT!
+### 4. Set up seed. IMPORTANT!
 
 You only have to do this once, before using the application for the first time. Hit the api endpoint: "http:/localhost:3001/api/seeds" with a POST request with an object of form:
 
