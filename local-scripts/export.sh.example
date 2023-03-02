@@ -1,0 +1,5 @@
+#!/bin/bash -e
+mongoexport --username='<USERNAME>' --config=export-config.yml --collection players --type json --out players.json
+mongoexport --username='<USERNAME>' --config=export-config.yml --collection offerings --type json --out offerings.json
+mongoexport --username='<USERNAME>' --config=export-config.yml --collection seeds --type json --out seeds.json
+mongoexport --username='<USERNAME>' --config=export-config.yml --collection wishlists --type json --out wishlists.json

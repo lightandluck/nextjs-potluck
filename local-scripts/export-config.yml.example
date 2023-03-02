@@ -1,0 +1,2 @@
+password: '<PASSWORD>'
+uri: 'mongodb+srv://<ADDRESS>/<DBNAME>'
