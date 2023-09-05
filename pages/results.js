@@ -6,7 +6,7 @@ export default class Results extends Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
-    this.copytoclipboard = this.copytoclipboard.bind(this);
+    // this.copytoclipboard = this.copytoclipboard.bind(this);
   }
 
   onSubmit(e) {
@@ -14,10 +14,10 @@ export default class Results extends Component {
     window.doit();
   }
 
-  copytoclipboard(e) {
-    e.preventDefault();
-    window.copytoclipboard('output');
-  }
+  // copytoclipboard(e) {
+  //   e.preventDefault();
+  //   window.copytoclipboard('output');
+  // }
 
   render() {
     return (
@@ -52,13 +52,13 @@ export default class Results extends Component {
         <br />
         <div className='results' id='output'></div>
         <br />
-        <input
+        {/* <input
           readOnly
           type='button'
           defaultValue='Copy Results'
           onClick={this.copytoclipboard}
           id='copy-results'
-        />
+        /> */}
       </Fragment>
     );
   }
