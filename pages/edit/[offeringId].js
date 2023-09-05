@@ -32,30 +32,34 @@ export class EditOffering extends Component {
   }
 
   setupWidget() {
-    let myWidget = window.cloudinary.createUploadWidget(
-      {
-        cloudName: 'dkp0gitg9',
-        uploadPreset: 'potluck-images',
-        sources: ['local', 'camera'],
-      },
-      (error, result) => {
-        if (!error && result && result.event === 'success') {
-          console.log('Done! Here is the image info: ', result.info);
-          this.setState((prevState) => ({
-            imageURLs: [...prevState.imageURLs, result.info.url],
-          }));
+    if (window.cloudinary) {
+      let myWidget = window.cloudinary.createUploadWidget(
+        {
+          cloudName: 'dkp0gitg9',
+          uploadPreset: 'potluck-images',
+          sources: ['local', 'camera'],
+        },
+        (error, result) => {
+          if (!error && result && result.event === 'success') {
+            console.log('Done! Here is the image info: ', result.info);
+            this.setState((prevState) => ({
+              imageURLs: [...prevState.imageURLs, result.info.url],
+            }));
+          }
         }
-      }
-    );
+      );
 
-    document.getElementById('upload_widget').addEventListener(
-      'click',
-      function (e) {
-        e.preventDefault();
-        myWidget.open();
-      },
-      false
-    );
+      document.getElementById('upload_widget').addEventListener(
+        'click',
+        function (e) {
+          e.preventDefault();
+          myWidget.open();
+        },
+        false
+      );
+    } else {
+      document.getElementById('upload_widget').style.display = 'none';
+    }
   }
 
   async componentDidMount() {

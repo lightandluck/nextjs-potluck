@@ -200,10 +200,7 @@ function Offering({ offering, deleteOffering }) {
       {offering.imageURLs.length > 0 ? (
         <img src={offering.imageURLs[0]} />
       ) : (
-        <img
-          style={{ width: '250px' }}
-          src='https://res.cloudinary.com/dkp0gitg9/image/upload/v1668128230/potluck-images/image-placeholder-icon-16_w73xsu.png'
-        />
+        <img style={{ width: '250px' }} src='/images/placeholder.png' />
       )}
 
       <div className='actions'>
@@ -242,7 +239,7 @@ function PotluckItem({ offering, addToWishlist }) {
       {offering.imageURLs.length > 0 ? (
         <img src={offering.imageURLs[0]} />
       ) : (
-        <img src='https://res.cloudinary.com/dkp0gitg9/image/upload/v1668128230/potluck-images/image-placeholder-icon-16_w73xsu.png' />
+        <img src='/images/placeholder.png' />
       )}
 
       <div className='actions'>
