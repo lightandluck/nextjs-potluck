@@ -3,6 +3,7 @@
 This is an MVP (minimum viable product) for running Math Trades. The hope is that it can facilitate a math trade for things other than boardgames, which was the intention of the original TradeMaximizer.
 
 Demo: https://nextjs-potluck.netlify.app/
+Rough deploy instructions: https://cryptpad.fr/pad/#/2/pad/view/Sbm+8JbQnOvRhN5yHpyD+-1Fbn1rpWAEY77IzuJ-Bp0/
 
 ## How to install
 
