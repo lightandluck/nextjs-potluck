@@ -232,7 +232,7 @@ function PotluckItem({ offering, addToWishlist }) {
       {/* {console.log(offering)} */}
       <div className='info'>
         <div>
-          <strong>{offering.title}</strong>
+          <strong>{offering.title}</strong> - {offering.playerName}
         </div>
         <div>{offering.description}</div>
       </div>
