@@ -877,7 +877,6 @@ class TradeMaximizer {
     this.outfunc = out;
     this.progress = progress;
     this.fatal = fatal;
-
     this.outputln('TradeMaximizer Javascript ' + version);
 
     this.graph = new Graph(this);
@@ -1006,7 +1005,6 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
           this.outputln('# ' + newmetricsStr + ' (iteration ' + i + ')');
       }
       this.outputln('Completed ' + this.iterations + ' iterations.');
-      this.outputln('');
       this.graph.restoreMatches();
     }
     let stopTime = Date.now();
@@ -1496,7 +1494,6 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
 
     let alltrades = new Array();
 
-    // TODO: Fix output around here
     for (let cycle of cycles) {
       let size = cycle.length;
       numTrades += size;
@@ -1516,7 +1513,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
         alltrades.push(this.show(v) + ' receives ' + this.show(v.match.twin));
         totalCost += v.matchCost;
       }
-      loops.push('');
+      loops.push('\n');
     }
 
     let resultChecksum = null;
@@ -1540,20 +1537,46 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
       }
     }
 
-    if (this.showLoops) {
-      this.outputln('TRADE LOOPS (' + numTrades + ' total trades):');
-      this.outputln('');
-      for (let item of loops) this.outputln(item);
-    }
-
     if (this.showSummary) {
-      this.outputln('ITEM SUMMARY (' + numTrades + ' total trades):');
+      this.outputln('<hr />');
+      this.outputln('<h1>ITEM SUMMARY (' + numTrades + ' total trades):</h1>');
       this.outputln('');
-      for (let item of summary.sort()) this.outputln(item);
+
+      let lastName = '';
+      let currentName = '';
+
+      const rx = /\(([^()]*)\)/g;
+
+      for (let item of summary.sort()) {
+        currentName = item.match(rx)[0];
+
+        if (!lastName) {
+          lastName = currentName;
+        }
+        if (lastName !== currentName) {
+          this.outputln('');
+          this.outputln('---');
+          this.outputln('');
+          lastName = currentName;
+        }
+
+        this.outputln(item);
+      }
       this.outputln('');
     }
 
+    if (this.showLoops) {
+      this.outputln('<hr />');
+      this.outputln('<h1>TRADE LOOPS (' + numTrades + ' total trades):</h1>');
+      this.outputln('');
+      for (let item of loops) {
+        this.outputln(item);
+      }
+    }
+
+    this.outputln('<hr />');
     this.outputln('Results Checksum: ' + resultChecksum + '\n');
+    this.outputln('<hr />');
 
     if (this.showStats) {
       this.output(
