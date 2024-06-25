@@ -167,7 +167,7 @@ export default class CreateOffering extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <h3>Create New Offering</h3>
         {this.state.showSuccessAlert ? (
           <div className='alert alert-success'>

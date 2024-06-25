@@ -21,9 +21,9 @@ export default class Results extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className='container results-container'>
         <Head>
-          <title>Nextjs Potluck Prototype</title>
+          <title>Nextjs Potluck Results</title>
           <link rel='icon' href='/favicon.ico' />
           <script src='/scripts/runTrade.js' />
         </Head>
@@ -37,29 +37,11 @@ export default class Results extends Component {
           id='runnow'
         />
         <div id='progress'></div>
-        {/* <form encType='multipart/form-data' method='POST' action='upload.html'>
-          <input id='listid' type='hidden' name='listid' value='' />
-          <input type='hidden' name='what' value='results' />
-          <input type='hidden' name='filetype' value='text' />
-          <input
-            type='hidden'
-            name='fileupload'
-            value='from TradeMaxizer Javascript'
-          />
-          <input type='hidden' name='direct' value='1' />
-        </form> */}
 
         <br />
         <div className='results' id='output'></div>
         <br />
-        {/* <input
-          readOnly
-          type='button'
-          defaultValue='Copy Results'
-          onClick={this.copytoclipboard}
-          id='copy-results'
-        /> */}
-      </Fragment>
+      </div>
     );
   }
 }

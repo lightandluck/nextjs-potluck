@@ -252,7 +252,7 @@ export default class DraggableExample extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className='container results-container'>
         <div className='form-group'>
           <label>Player name: </label>
           <select
@@ -420,7 +420,7 @@ export default class DraggableExample extends React.Component {
             </Droppable>
           </table>
         </DragDropContext>
-      </React.Fragment>
+      </div>
     );
   }
 }

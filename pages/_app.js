@@ -35,9 +35,8 @@ export default function MyApp({ Component, pageProps }) {
         <script src='/scripts/tradeMax-util.js' />
       </Head>
       <Navbar />
-      <div className='container'>
-        <Component {...pageProps} />
-      </div>
+
+      <Component {...pageProps} />
     </Fragment>
   );
 }

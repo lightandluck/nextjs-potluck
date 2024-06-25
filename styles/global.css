@@ -41,6 +41,11 @@ nav {
   color: rgba(33, 33, 33, 1);
 }
 
+.results-container {
+  margin: 0;
+  max-width: 100%;
+}
+
 .table {
   color: var(--dark);
 }
@@ -250,9 +255,4 @@ tr:focus {
 .results {
   white-space: pre;
   font-family: monospace, Courier, Monaco;
-  height: 900px;
-  max-height: 60vh;
-  width: 100%;
-  overflow-y: scroll;
-  background-color: lightblue;
 }

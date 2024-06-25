@@ -50,7 +50,7 @@ export default class CreatePlayer extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className='container'>
         <Head>
           <title>Nextjs Potluck Prototype</title>
           <link rel='icon' href='/favicon.ico' />
@@ -88,7 +88,7 @@ export default class CreatePlayer extends Component {
             </div>
           </form>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

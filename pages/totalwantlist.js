@@ -83,7 +83,7 @@ export default class TotalWantlist extends Component {
   // TODO: Add loading animation while wantlist is being generated
   render() {
     return (
-      <div>
+      <div className='container results-container'>
         {/* <input
           type='button'
           defaultValue='Upload wantlist to server'

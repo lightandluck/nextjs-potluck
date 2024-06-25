@@ -147,7 +147,7 @@ export default class OfferingsList extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className='container'>
         <Head>
           <link
             rel='stylesheet'
@@ -181,7 +181,7 @@ export default class OfferingsList extends Component {
           <h3 className='potluck-header'>Potluck Offerings</h3>
           <ul className='gallery'>{this.potluckList()}</ul>
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

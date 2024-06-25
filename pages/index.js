@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 
 export default function Home() {
   return (
-    <Fragment>
+    <div className='container'>
       <Head>
         <title>Potluck Prototype</title>
       </Head>
@@ -12,7 +12,9 @@ export default function Home() {
         <h1>Potluck Prototype</h1>
 
         <p>
-          This is an MVP (minimum viable product) for running Math Trades. The hope is that it can facilitate a math trade for things other than boardgames, which was the intention of the original TradeMaximizer.
+          This is an MVP (minimum viable product) for running Math Trades. The
+          hope is that it can facilitate a math trade for things other than
+          boardgames, which was the intention of the original TradeMaximizer.
         </p>
 
         <h2>Innovation</h2>
@@ -22,16 +24,23 @@ export default function Home() {
           This means that the process of evaluating trades for the user
           decreases from O(n^2) to O(n) complexity.
         </p>
-  
+
         <h2>Source Code</h2>
         <ul>
-          <li><a href='https://gitlab.com/lightandluck/next-js-potluck'>Gitlab</a></li>
-          <li><a href='https://github.com/lightandluck/nextjs-potluck'>Github</a></li>
-          <li><a href='https://gitlab.com/lightandluck/potluck-prototype'>Old version</a> for posterity</li>
+          <li>
+            <a href='https://gitlab.com/lightandluck/next-js-potluck'>Gitlab</a>
+          </li>
+          <li>
+            <a href='https://github.com/lightandluck/nextjs-potluck'>Github</a>
+          </li>
+          <li>
+            <a href='https://gitlab.com/lightandluck/potluck-prototype'>
+              Old version
+            </a>{' '}
+            for posterity
+          </li>
         </ul>
-  
-        
-  
+
         <h2>Credits and Prior Art</h2>
         <ul>
           <li>
@@ -235,6 +244,6 @@ export default function Home() {
           box-sizing: border-box;
         }
       `}</style> */}
-    </Fragment>
+    </div>
   );
 }
