@@ -1503,13 +1503,22 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
         loops.push(
           this.pad(this.show(v)) + ' receives ' + this.show(v.match.twin)
         );
+        // summary.push(
+        //   this.pad(this.show(v)) +
+        //     ' receives ' +
+        //     this.pad(this.show(v.match.twin)) +
+        //     ' and sends to ' +
+        //     this.show(v.twin.match)
+        // );
+
         summary.push(
           this.pad(this.show(v)) +
-            ' receives ' +
-            this.pad(this.show(v.match.twin)) +
-            ' and sends to ' +
-            this.show(v.twin.match)
+            ' sends to ' +
+            this.pad(this.show(v.twin.match)) +
+            ' and receives ' +
+            this.show(v.match.twin)
         );
+
         alltrades.push(this.show(v) + ' receives ' + this.show(v.match.twin));
         totalCost += v.matchCost;
       }
