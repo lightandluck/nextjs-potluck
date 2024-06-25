@@ -1548,7 +1548,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
 
     if (this.showSummary) {
       this.outputln('<hr />');
-      this.outputln('<h1>ITEM SUMMARY (' + numTrades + ' total trades):</h1>');
+      this.outputln('<h2>ITEM SUMMARY (' + numTrades + ' total trades):</h2>');
       this.outputln('');
 
       let lastName = '';
@@ -1576,7 +1576,7 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
 
     if (this.showLoops) {
       this.outputln('<hr />');
-      this.outputln('<h1>TRADE LOOPS (' + numTrades + ' total trades):</h1>');
+      this.outputln('<h2>TRADE LOOPS (' + numTrades + ' total trades):</h2>');
       this.outputln('');
       for (let item of loops) {
         this.outputln(item);
