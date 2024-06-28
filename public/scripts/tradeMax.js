@@ -716,11 +716,13 @@ class Graph {
   }
 
   reportStatsOrDot(name, verbose) {
+    return;
     if (verbose) this.reportStats(name, verbose);
     else this.tm.output('.');
   }
 
   reportStats(name, verbose) {
+    return;
     if (!verbose) return;
 
     let histogram = [];
@@ -884,11 +886,11 @@ class TradeMaximizer {
     let wantLists = this.readWantLists();
     if (wantLists == null) return;
 
-    if (this.options.length > 0) {
-      this.output('Options:');
-      for (let option of this.options) this.output(' ' + option);
-      this.outputln('');
-    }
+    // if (this.options.length > 0) {
+    //   this.output('Options:');
+    //   for (let option of this.options) this.output(' ' + option);
+    //   this.outputln('');
+    // }
 
     if (
       this.priorityScheme != NO_PRIORITIES &&
@@ -1503,6 +1505,8 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
         loops.push(
           this.pad(this.show(v)) + ' receives ' + this.show(v.match.twin)
         );
+
+        /****  Receives first ****/
         // summary.push(
         //   this.pad(this.show(v)) +
         //     ' receives ' +
@@ -1511,12 +1515,14 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
         //     this.show(v.twin.match)
         // );
 
+        /**** Sends first ****/
+
         summary.push(
-          this.pad(this.show(v)) +
+          this.pad('' + this.show(v)) +
             ' sends to ' +
             this.pad(this.show(v.twin.match)) +
             ' and receives ' +
-            this.show(v.match.twin)
+            this.show(v.match.twin + '')
         );
 
         alltrades.push(this.show(v) + ' receives ' + this.show(v.match.twin));
@@ -1557,11 +1563,12 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
       const rx = /\(([^()]*)\)/g;
 
       for (let item of summary.sort()) {
-        currentName = item.match(rx)[0];
+        currentName = item.match(rx)[0] || '';
 
         if (!lastName) {
           lastName = currentName;
         }
+
         if (lastName !== currentName) {
           this.outputln('');
           this.outputln('---');
