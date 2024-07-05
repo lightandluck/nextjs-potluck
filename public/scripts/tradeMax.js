@@ -1516,14 +1516,23 @@ for( let i = 0 ; i < this.graph.receivers.length ; i++ ) {
         // );
 
         /**** Sends first ****/
+        const rx = /\(([^()]*)\)/g;
 
-        summary.push(
-          this.pad('' + this.show(v)) +
-            ' sends to ' +
-            this.pad(this.show(v.twin.match)) +
-            ' and receives ' +
-            this.show(v.match.twin + '')
-        );
+        let summaryText = `<span class="sender">${this.show(
+          v
+        )}</span> <b>--> sends to</b> <span class="sendTo">${
+          this.show(v.twin.match).match(rx)[0] || ''
+        }</span> <b>--> receives</b> <span class="receives">${this.show(
+          v.match.twin
+        )}</-span>`;
+
+        let summaryText2 =
+          this.pad(this.show(v)) +
+          ' sends to ' +
+          this.pad(this.show(v.twin.match)) +
+          ' and receives ' +
+          this.show(v.match.twin);
+        summary.push(summaryText);
 
         alltrades.push(this.show(v) + ' receives ' + this.show(v.match.twin));
         totalCost += v.matchCost;
