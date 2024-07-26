@@ -5,11 +5,38 @@ export default function Home() {
   return (
     <div className='container'>
       <Head>
-        <title>Potluck Prototype</title>
+        <title>Potluck</title>
       </Head>
 
       <main>
-        <h1>Potluck Prototype</h1>
+        <h1>
+          Potluck - <br />
+          Exchange resources without money or barter
+        </h1>
+        <p>
+          If you have a community of people looking to offer gifts, how do we
+          coordinate that going to the right people? This question came to mind
+          as I was working with a{' '}
+          <a href='https://www.weallwegotsd.com/'>mutual aid</a> in San Diego.
+        </p>
+        <p>
+          We put out a form asking what gifts people would want to contribute
+          and received over 500 responses with offerings ranging from a drum
+          set, a kid's bicycle, a remote therapy session, and so much more.
+          There were so many latent resources and generosity in our community
+          that we didn't have a way to coordinate.{' '}
+        </p>
+        <p>
+          This inspired me to start building Potluck, a coordination tool that
+          allows someone to add an offering, select what they would want in
+          return (if anything), and then automatically be told who to give an
+          item to and who to receive something from.{' '}
+        </p>
+
+        <p>
+          This website currently works with just a single community and a single
+          pot. It is a teaching tool for how to understand this process.
+        </p>
 
         <p>
           This is an MVP (minimum viable product) for running Math Trades. The
@@ -43,6 +70,9 @@ export default function Home() {
 
         <h2>Credits and Prior Art</h2>
         <ul>
+          <li>
+            <a href='https://umistapotlatch.ca/potlatch-eng.php'>Potlatch</a>
+          </li>
           <li>
             Used{' '}
             <a href='https://github.com/beaucarnes/mern-exercise-tracker-mongodb'>
