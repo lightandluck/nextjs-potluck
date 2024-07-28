@@ -71,7 +71,10 @@ export default function Home() {
         <h2>Credits and Prior Art</h2>
         <ul>
           <li>
-            <a href='https://umistapotlatch.ca/potlatch-eng.php'>Potlatch</a>
+            <a href='https://umistapotlatch.ca/potlatch-eng.php'>
+              Potlatch - indigenous practice that inspired this -
+              https://umistapotlatch.ca/potlatch-eng.php
+            </a>
           </li>
           <li>
             Used{' '}
