@@ -52,7 +52,7 @@ export default class CreatePlayer extends Component {
     return (
       <div className='container'>
         <Head>
-          <title>Nextjs Potluck Prototype</title>
+          <title>Potluck Prototype</title>
           <link rel='icon' href='/favicon.ico' />
         </Head>
         <div>

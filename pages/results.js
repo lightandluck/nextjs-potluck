@@ -23,7 +23,7 @@ export default class Results extends Component {
     return (
       <div className='container results-container'>
         <Head>
-          <title>Nextjs Potluck Results</title>
+          <title>Potluck Results</title>
           <link rel='icon' href='/favicon.ico' />
           <script src='/scripts/runTrade.js' />
         </Head>
