@@ -71,8 +71,8 @@ export default function Home() {
         <h2>Credits and Prior Art</h2>
         <ul>
           <li>
+            Potlatch - indigenous practice that inspired this -
             <a href='https://umistapotlatch.ca/potlatch-eng.php'>
-              Potlatch - indigenous practice that inspired this -
               https://umistapotlatch.ca/potlatch-eng.php
             </a>
           </li>
@@ -112,7 +112,7 @@ export default function Home() {
           </li>
           <li>
             TradeMaximizer wiki:{' '}
-            <a href='https://boardgamegeek.com/wiki/page/TradeMaximizer'>
+            <a href='https://boardgamegeek.com/wiki/page/TradeMaximizer#toc9'>
               https://boardgamegeek.com/wiki/page/TradeMaximizer
             </a>
           </li>
